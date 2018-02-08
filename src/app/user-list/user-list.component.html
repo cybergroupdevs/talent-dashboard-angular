@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    
+  </div>
+  
+  <div class="row">
+    <div class="filter col-sm-4" >
+    <select 
+      ngModel 
+      name="category" 
+      id="category" 
+      class="form-control " 
+      required>
+    <option value="0" class="">filter by Skills</option>
+    <option *ngFor="let category of categoryList" [value]="category.id">
+      {{category.name}}
+    </option>
+  </select>
+  </div>
+  <div class="filter col-sm-4" >
+    <select 
+      ngModel 
+      name="category" 
+      id="category" 
+      class="form-control" 
+      required>
+    <option value="0" class="">filter by Designation</option>
+    <option *ngFor="let category of categoryList" [value]="category.id">
+      {{category.name}}
+    </option>
+  </select>
+  </div>
+  <div class="filter col-sm-4" >
+    <select 
+      ngModel 
+      name="category" 
+      id="category" 
+      class="form-control" 
+      required>
+    <option value="0" class="">filter by Project</option>
+    <option *ngFor="let category of categoryList" [value]="category.id">
+      {{category.name}}
+    </option>
+  </select>
+  </div>
+  
+  </div>
+  <div class="row " >
+      <div class="col-sm-3" *ngFor="let employee of employees">
+          <div class="card">
+              <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+              <div class="avatar">
+                  <img src="./assets/images/img1.jpg" alt="" />
+              </div>
+              <div class="content">
+                  <p>{{employee.name}} <br>
+                     {{employee.email}}<br>
+                    </p>
+                  <p><button type="button" class="btn btn-default">Know me</button></p>
+              </div>
+          </div>
+      </div>    
+    </div>
+    </div>
