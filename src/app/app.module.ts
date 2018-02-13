@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
@@ -14,11 +15,14 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule , 
-    RouterModule.forRoot([ {path : 'home' , component : HomeComponent} 
+    RouterModule.forRoot([ {path : 'home' , component : HomeComponent}
+    ]),
+    RouterModule.forRoot([ {path : 'details' , component : DetailsComponent}
     ])
   ],
   providers: [],
