@@ -6,6 +6,9 @@ import {HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { D3Service, D3_DIRECTIVES  } from './d3';
+import { GraphComponent } from './visuals/graph/graph.component';
+import { SHARED_VISUALS } from './visuals/shared';
 import { FooterComponent } from './footer/footer.component';
 import { DetailsComponent } from './details/details.component';
 import { UserListComponent } from './user-list/user-list.component';
@@ -16,6 +19,9 @@ import { UserListComponent } from './user-list/user-list.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
+    GraphComponent,
+    ...SHARED_VISUALS,
+    ...D3_DIRECTIVES,
     FooterComponent,
     DetailsComponent,
     UserListComponent
@@ -37,7 +43,7 @@ import { UserListComponent } from './user-list/user-list.component';
 ]),
 HttpModule
   ],
-  providers: [],
+  providers: [D3Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
