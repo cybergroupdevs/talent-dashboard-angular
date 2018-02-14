@@ -1,0 +1,17 @@
+:host {
+background: #C8BFC7 !important;
+display: block;
+width: 100%;
+height: 86vh;
+}
+
+.col{
+    margin-left: 15px;
+    
+    margin-top: 35px;
+    
+    height: 100px;
+    border-radius: 15px;
+    background: white;
+    box-shadow: inset 1px 1px 1px #767677;
+}
