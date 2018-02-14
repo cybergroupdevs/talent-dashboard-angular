@@ -1,0 +1,67 @@
+img{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+    border-radius: 100px;
+    
+    
+    
+}
+h5{
+    text-shadow: 2px 2px 1px rgb(0, 0, 0);
+    line-height: 30px;
+
+}
+.container{
+    margin-top: 50px;    
+    /*background-color: #233D4D;*/
+    background: #24414f; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #24414f 0%, #24414f 50%, #233d4d 51%, #233d4d 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #24414f 0%,#24414f 50%,#233d4d 51%,#233d4d 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #24414f 0%,#24414f 50%,#233d4d 51%,#233d4d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#24414f', endColorstr='#233d4d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    padding: 25px;
+    box-shadow: 3px 5px 1px rgb(187, 187, 187);
+    border-top-left-radius: 100px;
+}
+
+.featured{
+    background-color: white;
+    margin-top: 10px;
+    padding: 15px;
+    box-shadow: inset 3px 7px 1px rgb(25, 44, 56);
+    
+}
+
+.badge {
+    color: white;
+    margin-top: 5px;
+    padding: 5px;
+    width: 80px;
+    background: #F57C00;
+}
+
+.badges{
+    color: white;
+}
+.container-fluid{
+    background-color: white;
+    
+    margin-top: 25px;
+    padding: 15px;
+    box-shadow: inset 3px 7px 1px rgb(25, 44, 56);
+}
+
+.projects{
+    padding: 15px;  
+    background-color: white;
+    box-shadow: inset 3px 7px 1px rgb(25, 44, 56);
+
+}
+
+h5{
+    padding: 5px;
+    color: white;
+}
+
+

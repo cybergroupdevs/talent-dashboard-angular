@@ -6,6 +6,8 @@ import {HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
+import { DetailsComponent } from './details/details.component';
 import { UserListComponent } from './user-list/user-list.component';
 
 
@@ -14,6 +16,8 @@ import { UserListComponent } from './user-list/user-list.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
+    FooterComponent,
+    DetailsComponent,
     UserListComponent
   ],
   imports: [
@@ -25,8 +29,12 @@ import { UserListComponent } from './user-list/user-list.component';
     {
       path : 'userlist' , 
       component : UserListComponent
-    } 
-]), 
+    },
+    {
+      path : 'details' ,
+      component : DetailsComponent
+    }
+]),
 HttpModule
   ],
   providers: [],

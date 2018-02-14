@@ -1,0 +1,10 @@
+.navbar {
+    height: 8vh;
+    background: #F57C00 !important;
+    
+    box-shadow: 0 3px 4px #767677;
+}
+
+.nav-link, .navbar-brand{
+    color: white !important;
+}
