@@ -14,6 +14,8 @@ import { ListService } from './services/list.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+
 
 // Fusion Charts
 import * as FusionCharts from 'fusioncharts';
@@ -35,11 +37,14 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    GraphComponent
+    GraphComponent,
+
   ],
   imports: [
     BrowserModule ,
     FusionChartsModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([ {
       path : '' , 
       component : DashboardComponent
