@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { DetailsComponent } from './details/details.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { ListService } from './services/list.service';
 
 
 @NgModule({
@@ -37,7 +38,9 @@ import { UserListComponent } from './user-list/user-list.component';
 ]),
 HttpModule
   ],
-  providers: [],
+  providers: [
+    ListService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
