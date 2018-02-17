@@ -1,3 +1,47 @@
-<p>
-  login works!
-</p>
+<div class="Absolute-Center is-Responsive">
+  <div>
+    <mat-card>
+      <mat-card-title>
+        Login
+      </mat-card-title>
+      <mat-card-content>
+        <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Fill out your email</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Email" formControlName="firstCtrl" required>
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>Fill out your password</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Password" formControlName="secondCtrl" required type="password">
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Submit</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            You are now done.
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </mat-card-content>
+      <mat-card-footer>
+
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

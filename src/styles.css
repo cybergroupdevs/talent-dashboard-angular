@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 
 body{
@@ -12,4 +13,15 @@ body{
 .filter {
     margin-top: 10px;
     margin-bottom: 20px;
+}
+
+.Absolute-Center {
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+  
+.Absolute-Center.is-Responsive {
+    width: 80%; 
+    height: 50%;
 }

@@ -1,8 +1,18 @@
 import { GraphComponent } from './graph/graph.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -14,7 +24,6 @@ import { ListService } from './services/list.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 
 // Fusion Charts
@@ -43,8 +52,16 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
   imports: [
     BrowserModule ,
     FusionChartsModule,
-    FormsModule,
-    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatIconModule,
+    FormsModule, ReactiveFormsModule,
     RouterModule.forRoot([ {
       path : '' , 
       component : DashboardComponent
