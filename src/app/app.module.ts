@@ -57,7 +57,15 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
       component : UserListComponent
     },
     {
-      path : 'details' ,
+      path : 'details/:username' ,
+      component : DetailsComponent
+    },
+    {
+      path : 'register' ,
+      component : RegisterComponent
+    },
+    {
+      path : '**' ,
       component : DetailsComponent
     }
 ]),

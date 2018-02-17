@@ -1,3 +1,96 @@
-<p>
-  register works!
-</p>
+<div class="container-fluid ">
+    <form class="modal-content" >
+      <div class="container">
+        <h1>Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <div class="form-group">
+        <label for="email"><b>Email</b></label>
+        <input type="text" ngModel name="email" #email="ngModel" placeholder="Enter Email"  required>
+        </div>
+
+        <div class="form-group">
+        <label for="text"><b>First Name</b></label>
+        <input type="text" placeholder="Enter First Name" name="firstName" required>
+        </div>
+        <div class="form-group">
+        <label for="text"><b>Middle Name</b></label>
+        <input type="text" placeholder="Enter Middle Name" name="middleName" required>
+        </div>
+        <div class="form-group">
+        <label for="text"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" name="lastName" required>
+        </div>
+        <div class="form-group">
+        <label for="text"><b>Employee Code</b></label>
+        <input type="text" placeholder="Enter Employee Code" name="employeeCode" required>
+        </div>
+        <div class="form-group">
+        <label for="phoneNumber"><b>Mobile Number</b></label>
+        <input type="text" placeholder="Enter Phone Number" name="phoneNumber" required>
+        </div>
+        <div class="form-group">
+        <label for="dateOfBirth"><b>Date of Birth</b></label>
+        <input type="date"  name="dateOfBirth" required>
+        </div>
+        <div class="form-group">
+        <div class="radio">
+        <label><b>Male</b></label> <input type="radio"  name="gender" required>
+        <label> 
+        <b>Female</b>
+        </label>
+        <input type="radio"  name="gender" required>
+        </div>
+        </div>
+        <div class="form-group">
+        <label for="location"><b>location</b></label>
+        <input type="text" placeholder="Enter location" name="location" required>
+        </div>
+        <div class="form-group">
+        <label for="address"><b>Address</b></label>
+        <input type="text" placeholder=" Enter address" name="address" required>
+        </div>
+        <div class="form-group">  
+        <label for="city"><b>City</b></label>
+        <input type="text" placeholder="Enter City" name="city" required>
+        </div>
+        <div class="form-group">
+          <label for="">Category</label>
+           <select 
+             ngModel 
+             name="category" 
+             id="category" 
+             class="form-control"
+             required>
+           <option value="0" class="">Select Any</option>
+           <option *ngFor="let category of categoryList" [value]="category.id">
+             {{category.name}}
+           </option>
+         </select>
+        </div>
+      <div class="form-group">
+      <div class="radio">
+          <label><b>Normal User</b></label> <input type="radio"  name="userType" required>
+          <label> 
+          <b>Admin</b>
+          </label>
+          <input type="radio"  name="userType" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+      </div>
+      <div class="form-group">
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      </div>
+      <div class="form-group">
+        <div class="clearfix">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+          <button type="submit" class="signupbtn">Sign Up</button>
+        </div>
+        </div>
+      </div>
+    </form>
+</div>

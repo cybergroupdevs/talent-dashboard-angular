@@ -10,13 +10,20 @@ export class UserListComponent implements OnInit {
   constructor(private service : ListService) { }
 
   ngOnInit() {
-      this.service.getEmployeeList().subscribe(response => {
-      this.employees = response.json();
-      console.log(this.employees);
-      },error => {
-        alert("Something unexpected occured");
-        console.log(error);
-      })
+      this.service.getEmployeeList()
+      .subscribe(
+        response => {
+          this.employees = response.json();
+          console.log(this.employees);
+        },
+        (error : Response) => {
+          if(error.status === 400){}
+          else{
+            alert("Something unexpected occured");
+            console.log(error);
+          }
+          
+        });
 
       // this.service.getCategoryList().subscribe(response =>{
       //   this.categoryList = response.json();

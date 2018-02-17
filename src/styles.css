@@ -8,3 +8,8 @@ body{
 .card{
     background-color: white;
 }
+
+.filter {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

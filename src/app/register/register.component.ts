@@ -12,4 +12,14 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  categoryList = [ {
+    id:1 , name:"skill1"
+  },
+  {
+    id:2 , name:"skill2"
+  },
+  {
+    id:3 , name:"skill3"
+  }];
+
 }
