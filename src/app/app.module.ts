@@ -6,12 +6,12 @@ import {HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { D3Service, D3_DIRECTIVES  } from './d3';
-import { GraphComponent } from './visuals/graph/graph.component';
-import { SHARED_VISUALS } from './visuals/shared';
 import { FooterComponent } from './footer/footer.component';
 import { DetailsComponent } from './details/details.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -19,19 +19,27 @@ import { UserListComponent } from './user-list/user-list.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    GraphComponent,
-    ...SHARED_VISUALS,
-    ...D3_DIRECTIVES,
     FooterComponent,
     DetailsComponent,
-    UserListComponent
+    UserListComponent,
+    LoginComponent,
+    RegisterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule , 
     RouterModule.forRoot([ {
-      path : 'home' , 
-      component : HomeComponent
+      path : '' , 
+      component : DashboardComponent
     }, 
+    {
+      path : 'login' , 
+      component : LoginComponent
+    },
+    {
+      path : 'register' , 
+      component : RegisterComponent
+    },
     {
       path : 'userlist' , 
       component : UserListComponent
@@ -43,7 +51,7 @@ import { UserListComponent } from './user-list/user-list.component';
 ]),
 HttpModule
   ],
-  providers: [D3Service],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
