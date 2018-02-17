@@ -1,3 +1,4 @@
+import { GraphComponent } from './graph/graph.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -13,6 +14,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+// Fusion Charts
+import * as FusionCharts from 'fusioncharts';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
+import { FusionChartsModule } from 'angular4-fusioncharts';
+
+FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
+
 
 @NgModule({
   declarations: [
@@ -24,10 +33,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UserListComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    GraphComponent
   ],
   imports: [
-    BrowserModule , 
+    BrowserModule ,
+    FusionChartsModule,
     RouterModule.forRoot([ {
       path : '' , 
       component : DashboardComponent
