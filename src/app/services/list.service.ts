@@ -9,3 +9,4 @@ export class ListService {
   getEmployeeList(){
     return this.http.get('https://jsonplaceholder.typicode.com/users');
   }
+}
