@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm} from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +10,13 @@ import {FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgF
 })
 export class LoginComponent implements OnInit {
   isLinear = true;
+  invalidLogin = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, 
+              private _service : AuthService,
+              private _router : Router 
+            ) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -19,6 +25,25 @@ export class LoginComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+  }
+
+  submit(){
+    this.invalidLogin = false;
+    var username:string = this.firstFormGroup.controls.firstCtrl.value;
+    var password:string = this.secondFormGroup.controls.secondCtrl.value
+    this._service.login({'emailAddress': username, 'password': password})
+    .subscribe(response =>{
+      if(response){
+        console.log("logged in successfully!");
+        this._router.navigate(['/dashboard']);
+      }
+      else{
+        this.invalidLogin = true;
+      }
+    },
+    error=>{
+      alert("Error occured");
+    })
   }
 
 }

@@ -6,15 +6,28 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active" routerLinkActive = "active current">
-        <a class="nav-link" routerLink="/login">Login <span class="sr-only">(current)</span></a>
+      <li class="nav-item" routerLinkActive = "active current">
+          <a class="nav-link" *ngIf='authService.isLoggedIn()' routerLink="/dashboard">Dashboard</a>
       </li>
       <li class="nav-item" routerLinkActive = "active current">
-        <a class="nav-link" routerLink="/userlist">User List</a>
+          <a class="nav-link" routerLink="/userlist">User List</a>
       </li>
-      
+      <li class="nav-item" routerLinkActive = "active current">
+          <a class="nav-link" *ngIf='authService.isLoggedIn() && authService.currentUser.userType == "ADMIN"' routerLink="/admindashboard">Admin Dashboard</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
       <li class="nav-item">
-        <a class="nav-link " routerLink="/register">Register</a>
+          <a class="nav-link" *ngIf='!authService.isLoggedIn()' routerLink="/register">Register</a>
+      </li>
+      <li class="nav-item active" routerLinkActive = "active current">
+          <span class="nav-link" *ngIf='authService.isLoggedIn()'>Hi {{authService.currentUser.emailAddress}}!</span>
+      </li>
+      <li class="nav-item active" routerLinkActive = "active current">
+          <a class="nav-link" *ngIf='!authService.isLoggedIn()' routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item active" routerLinkActive = "active current">
+          <a class="nav-link" *ngIf='authService.isLoggedIn()' (click)="authService.logout()">Logout <span class="sr-only">(current)</span></a>
       </li>
     </ul>
     

@@ -25,14 +25,17 @@
               </mat-form-field>
               <div>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Submit</button>
+                <button mat-button matStepperNext (click)="submit()">Submit</button>
               </div>
             </form>
           </mat-step>
           <mat-step>
             <ng-template matStepLabel>Done</ng-template>
-            You are now done.
-            <div>
+            Logging you in.
+            <div *ngIf="invalidLogin" class="alert alert-danger">
+              Invalid username and/or password
+            </div>
+            <div *ngIf="invalidLogin">
               <button mat-button matStepperPrevious>Back</button>
               <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
             </div>

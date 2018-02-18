@@ -20,7 +20,8 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { DetailsComponent } from './details/details.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { ListService } from './services/list.service';
+import { HttpService } from './services/http.service';
+import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -64,7 +65,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     FormsModule, ReactiveFormsModule,
     RouterModule.forRoot([ {
       path : '' , 
-      component : DashboardComponent
+      component : UserListComponent
     }, 
     {
       path : 'login' , 
@@ -73,6 +74,10 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     {
       path : 'register' , 
       component : RegisterComponent
+    },
+    {
+      path : 'dashboard' , 
+      component : DashboardComponent
     },
     {
       path : 'userlist' , 
@@ -94,7 +99,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 HttpModule
   ],
   providers: [
-    ListService
+    HttpService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
