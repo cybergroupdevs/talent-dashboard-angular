@@ -10,10 +10,10 @@ export class UserListComponent implements OnInit {
   constructor(private service : HttpService) { }
 
   ngOnInit() {
-      this.service.getEmployeeList()
+      this.service.getUserList()
       .subscribe(
         response => {
-          this.employees = response.json();
+          this.employees = response.data;
           console.log(this.employees);
         },
         (error : Response) => {
