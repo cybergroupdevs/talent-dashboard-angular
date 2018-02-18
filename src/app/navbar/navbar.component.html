@@ -10,7 +10,7 @@
           <a class="nav-link" *ngIf='authService.isLoggedIn()' routerLink="/dashboard">Dashboard</a>
       </li>
       <li class="nav-item" routerLinkActive = "active current">
-          <a class="nav-link" routerLink="/userlist">User List</a>
+          <a class="nav-link" *ngIf='authService.isLoggedIn()' routerLink="/userlist">User List</a>
       </li>
       <li class="nav-item" routerLinkActive = "active current">
           <a class="nav-link" *ngIf='authService.isLoggedIn() && authService.currentUser.userType == "ADMIN"' routerLink="/admindashboard">Admin Dashboard</a>

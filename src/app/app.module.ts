@@ -71,7 +71,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     FormsModule, ReactiveFormsModule,
     RouterModule.forRoot([ {
       path : '' , 
-      component : UserListComponent
+      component : LoginComponent
     }, 
     {
       path : 'login' , 
@@ -93,7 +93,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     },
     {
       path : 'userlist' , 
-      component : UserListComponent
+      component : UserListComponent,
+      canActivate: [AuthGuard]
     },
     {
       path : 'details/:username' ,
