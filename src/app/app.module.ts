@@ -1,3 +1,4 @@
+import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { GraphComponent } from './graph/graph.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -33,6 +34,8 @@ import * as FusionCharts from 'fusioncharts';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
 import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 import { FusionChartsModule } from 'angular4-fusioncharts';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { AccessdeniedComponent } from './accessdenied/accessdenied.component';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -49,6 +52,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     RegisterComponent,
     DashboardComponent,
     GraphComponent,
+    AdmindashboardComponent,
+    AccessdeniedComponent,
 
   ],
   imports: [
@@ -82,6 +87,11 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
       canActivate: [AuthGuard]
     },
     {
+      path : 'admindashboard' , 
+      component : AdmindashboardComponent,
+      canActivate: [AuthGuard, AdminAuthGuard]
+    },
+    {
       path : 'userlist' , 
       component : UserListComponent
     },
@@ -95,6 +105,10 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
       component : RegisterComponent
     },
     {
+      path : 'no-access' ,
+      component : AccessdeniedComponent
+    },
+    {
       path : '**' ,
       component : DetailsComponent,
       canActivate: [AuthGuard]
@@ -105,7 +119,8 @@ HttpModule
   providers: [
     HttpService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    AdminAuthGuard
   ],
   bootstrap: [AppComponent]
 })
