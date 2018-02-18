@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup , FormControl , Validators } from '@angular/forms';
-
+import { ListService } from '../services/list.service';
 
 @Component({
   selector: 'app-register',
@@ -9,21 +9,36 @@ import { FormGroup , FormControl , Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service : ListService) { }
 
   ngOnInit() {
   }
 
   submit(f){
-    console.log(f);
+    this.service.registerUser(f.value)
+    .subscribe(response =>{
+      console.log(f.value);
+      console.log(response.status);;
+      console.log("registered successfully!");
+    },
+  error=>{
+    alert("Error occured");
+  })
   }
 
+  genderType = [ {
+    id:"F" , name:"Female"
+  },
+  {
+    id:"F" , name:"Male"
+  }];
+
   userType =[{ 
-              id : 1 , 
+              id : "ADMIN" , 
               name : "Admin"
             },
             { 
-              id : 2 , 
+              id : "USER" , 
               name : "User"
             }];
 

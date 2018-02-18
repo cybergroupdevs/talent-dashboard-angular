@@ -5,12 +5,12 @@
         <p>Please fill in this form to create an account.</p>
         <hr>
         <div class="form-group">
-        <label for="email"><b>Email</b></label>
+        <label for="emailAddress"><b>Email</b></label>
         <input 
           type="text" 
           ngModel 
-          name="email"  
-          #email="ngModel"
+          name="emailAddress"  
+          #emailAddress="ngModel"
           placeholder="Enter Email"  
           required>
         </div>
@@ -61,8 +61,8 @@
           type="text" 
           placeholder="Enter Phone Number" 
           ngModel 
-          #phoneNumber="ngModel"
-          name="phoneNumber" 
+          #mobileNumber="ngModel"
+          name="mobileNumber" 
           required>
         </div>
         <div class="form-group">
@@ -75,24 +75,45 @@
           required>
         </div>
         <div class="form-group">
-        <div class="radio">
-        <label><b>Male</b></label> 
-        <input 
-          type="radio"  
-          name="gender" 
-          ngModel 
-          #gender="ngModel"
-          required>
-        <label> 
-        <b>Female</b>
-        </label>
-        <input 
-          type="radio"  
-          name="gender" 
-          ngModel   
-          required>
-        </div>
-        </div>
+            <label for="gender"> Gender </label>
+            <select 
+              ngModel
+              name="gender" 
+              id="gender" 
+              class="form-control"
+              #gender = "ngModel">
+              <option *ngFor="let gender of genderType"  [value]="gender.id">
+                {{gender.name}}
+              </option>
+            </select>
+          </div>
+        
+          <div class="form-group">
+              <label for="">Skills</label>
+               <select 
+                 ngModel 
+                 name="skills" 
+                 id="skills" 
+                 class="form-control"
+                 #skills = "ngModel"
+                 multiple
+                 required>
+               <option *ngFor="let category of categoryList" [value]="category.id">
+                 {{category.name}}
+               </option>
+             </select>
+            </div>
+          <div class="form-group">
+            <label for="userType"> Role </label>
+            <select 
+              ngModel
+              name="userType" 
+              id="userType" 
+              class="form-control">
+            <option value="0" class="">Select Any</option>
+            <option *ngFor="let type of userType"  [value]="type.id">{{type.name}}</option>
+            </select>
+          </div>  
         <div class="form-group">
         <label for="location"><b>location</b></label>
         <input 
@@ -123,49 +144,39 @@
           #city="ngModel"
           required>
         </div>
-        <div class="form-group">
-          <label for="">Category</label>
-           <select 
-             ngModel 
-             name="category" 
-             id="category" 
-             class="form-control"
-             required>
-           <option value="0" class="">Select Any</option>
-           <option *ngFor="let category of categoryList" [value]="category.id">
-             {{category.name}}
-           </option>
-         </select>
-        </div>
+        <div class="form-group">  
+            <label for="country"><b>Country</b></label>
+            <input 
+              type="text" 
+              placeholder="Enter country" 
+              name="country" 
+              ngModel 
+              #country ="ngModel"
+              required>
+            </div>
+
       <div class="form-group">
-        <label for="userType"> Role </label>
-        <select 
-          ngModel
-          name="userType" 
-          #userType="ngModel"
-          id="userType" 
-          class="form-control">
-        <option *ngFor="let type of userType"  [value]="type.id">{{type.name}}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="psw"><b>Password</b></label>
+        <label for="password"><b>Password</b></label>
         <input 
           type="password"
           placeholder="Enter Password" 
-          name="psw"
+          name="password"
           ngModel 
-          #pwd="ngModel"
+          #password="ngModel"
           required>
       </div>
       <div class="form-group">
         <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+        <input 
+          type="password" 
+          placeholder="Repeat Password" 
+          name="psw-repeat" 
+          required>
       </div>
       <div class="form-group">
         <div class="clearfix">
-          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-          <button type="submit" class="signupbtn">Sign Up</button>
+          <button type="button" onclick="" class="cancelbtn">Cancel</button>
+          <button type="submit" class="signupbtn" >Sign Up</button>
         </div>
         </div>
       </div>
