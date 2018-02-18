@@ -1,3 +1,4 @@
+import { AuthGuard } from './services/auth-guard.service';
 import { GraphComponent } from './graph/graph.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -77,7 +78,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     },
     {
       path : 'dashboard' , 
-      component : DashboardComponent
+      component : DashboardComponent,
+      canActivate: [AuthGuard]
     },
     {
       path : 'userlist' , 
@@ -85,7 +87,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     },
     {
       path : 'details/:username' ,
-      component : DetailsComponent
+      component : DetailsComponent,
+      canActivate: [AuthGuard]
     },
     {
       path : 'register' ,
@@ -93,14 +96,16 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     },
     {
       path : '**' ,
-      component : DetailsComponent
+      component : DetailsComponent,
+      canActivate: [AuthGuard]
     }
 ]),
 HttpModule
   ],
   providers: [
     HttpService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

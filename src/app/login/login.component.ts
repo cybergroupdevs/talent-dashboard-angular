@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
   secondFormGroup: FormGroup;
   constructor(private _formBuilder: FormBuilder, 
               private _service : AuthService,
-              private _router : Router 
+              private _router : Router,
+              private route: ActivatedRoute
             ) { }
 
   ngOnInit() {
@@ -35,7 +36,8 @@ export class LoginComponent implements OnInit {
     .subscribe(response =>{
       if(response){
         console.log("logged in successfully!");
-        this._router.navigate(['/dashboard']);
+        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+        this._router.navigate([returnUrl || '/dashboard']);
       }
       else{
         this.invalidLogin = true;
