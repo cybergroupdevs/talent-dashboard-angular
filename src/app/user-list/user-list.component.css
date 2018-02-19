@@ -8,6 +8,7 @@
     border: 1px solid #CCC;
     border-radius: 8px;
     text-align: center;
+    
     padding: 0;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color:white;
@@ -41,11 +42,13 @@
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    border: 5px solid rgba(0,0,30,0.8);
+    border: 2px #F57C00; 
+    border-style: double;
+    border-width : thick; 
   }
   
   body {
-    font-family: "Lato", sans-serif;
+
 }
 
 /* Fixed sidenav, full height */
@@ -111,6 +114,20 @@
     margin-top: 10px;
     margin-bottom: 20px;
 }
+.fill {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+  }
+
+  .badge {
+    color: white;
+    margin-top: 5px;
+    padding: 5px;
+    width: 80px;
+    background: #F57C00;
+}
+
 
 /* Some media queries for responsiveness */
 @media screen and (max-height: 450px) {
