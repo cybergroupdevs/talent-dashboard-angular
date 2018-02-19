@@ -9,9 +9,14 @@
     border-radius: 8px;
     text-align: center;
     padding: 0;
-    background-color: #284c79;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color:white;
     color: rgb(136, 172, 217);
   }
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
   
   .card .header-bg {
     /* This stretches the canvas across the entire hero unit */
