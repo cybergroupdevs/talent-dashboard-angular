@@ -1,4 +1,4 @@
-<div class="container-fluid ">
+<!--<div class="container-fluid">
     <form #f="ngForm" (ngSubmit)="submit(f)" class="modal-content" >
       <div class="container">
         <div class="row">
@@ -208,3 +208,181 @@
       </div>
     </form>
 </div>
+-->
+<form #f="ngForm" (ngSubmit)="submit(f)">
+
+
+<div class="Absolute-Center is-Responsive">
+    <mat-card>
+      <mat-card-title>Registration</mat-card-title>
+      <mat-card-content>
+        Admin
+          <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>Details</mat-card-header>
+      <hr>
+      <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input 
+                  type="text" 
+                  ngModel 
+                  name="emailAddress"  
+                  #emailAddress="ngModel"
+                  placeholder="Email"  
+                  required>
+                </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                
+                <input 
+                  type="password"
+                  placeholder="Password" 
+                  name="password"
+                  ngModel 
+                  #password="ngModel"
+                  required>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="form-group">
+                  
+                  <input 
+                    type="password" 
+                    placeholder="Repeat Password" 
+                    name="psw-repeat" 
+                    required>
+                </div>
+            </div>
+      </div>
+
+    </mat-card>
+
+    <mat-card>
+        <mat-card-header>Personal Details</mat-card-header>
+        <hr>
+        <div class="row">
+          <div class="col-md-3">
+              <div class="form-group">
+                  <input 
+                    type="text"
+                    ngModel   
+                    #firstName="ngModel"
+                    placeholder="First Name" 
+                    name="firstName" 
+                    required>
+                  </div>
+          </div>
+          <div class="col-md-2">
+              <div class="form-group">
+                  
+                  <input 
+                    type="text"
+                    ngModel   
+                    #middleName="ngModel" 
+                    placeholder="Middle Name" 
+                    name="middleName" 
+                    required>
+                  </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input 
+                      type="text" 
+                      ngModel 
+                      #lastName="ngModel"
+                      placeholder="Last Name" 
+                      name="lastName" 
+                      required>
+                    </div>
+              </div>
+
+              <div class="col-md-3">
+                  <div class="form-group">
+                      <input 
+                        type="text" 
+                        placeholder="Employee Code" 
+                        ngModel 
+                        #employeeCode="ngModel"
+                        name="employeeCode" 
+                        required>
+                      </div>
+              </div>
+        </div>
+        <div class="row">
+            
+            <div class="col-md-4">
+                <div class="form-group">
+                    
+                    <input 
+                      type="text" 
+                      placeholder="Phone Number" 
+                      ngModel 
+                      #mobileNumber="ngModel"
+                      name="mobileNumber" 
+                      required>
+                    </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <select 
+                        ngModel
+                        name="gender" 
+                        id="gender" 
+                        class="form-control"
+                        #gender = "ngModel">
+                        <option *ngFor="let gender of genderType"  [value]="gender.id">
+                          {{gender.name}}
+                        </option>
+                      </select>
+                    </div>
+                </div>
+          </div>
+  
+      </mat-card>
+
+      <mat-card>
+          <mat-card-header>Professional Details</mat-card-header>
+          <hr>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              Projects
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Skills</label>
+                     <select 
+                       ngModel 
+                       name="skills" 
+                       id="skills" 
+                       class="form-control"
+                       #skills = "ngModel"
+                       multiple
+                       required>
+                     <option *ngFor="let category of categoryList" [value]="category.id">
+                       {{category.name}}
+                     </option>
+                   </select>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </mat-card>
+      <div class="form-group">
+          <div class="clearfix">
+            <button type="button" onclick="" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn" >Sign Up</button>
+          </div>
+          </div>
+
+        
+
+</div></form>
