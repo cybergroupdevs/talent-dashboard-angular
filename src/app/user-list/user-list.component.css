@@ -47,9 +47,6 @@
     border-width : thick; 
   }
   
-  body {
-
-}
 
 /* Fixed sidenav, full height */
 .sidenav {
@@ -124,7 +121,7 @@
     color: white;
     margin-top: 5px;
     padding: 5px;
-    width: 80px;
+    width: 50px;
     background: #F57C00;
 }
 

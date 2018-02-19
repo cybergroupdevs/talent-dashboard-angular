@@ -15,6 +15,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FilterPipe} from './user-list/filter.pipe';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -54,7 +56,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     GraphComponent,
     AdmindashboardComponent,
     AccessdeniedComponent,
-
+    FilterPipe 
   ],
   imports: [
     BrowserModule ,

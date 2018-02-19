@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row">
       <div class="fill col-sm-12 filter">
-          <input type="text" class="form-control">
+          <input 
+            #query
+            (keyup)="filter(query.value)"
+            type="text"
+            class="form-control"
+            placeholder=" Search...">
       </div>
   </div>
   
@@ -47,7 +52,7 @@
   </div>
   </div>
   <div class ="row " >
-      <div class="col-sm-4 filter" *ngFor="let employee of employees">
+      <div class="col-sm-4 filter" *ngFor="let employee of filteredEmployee ">
           <div class="card">
             <a [routerLink]="['/details' , employee.employeeCode]">
               <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
