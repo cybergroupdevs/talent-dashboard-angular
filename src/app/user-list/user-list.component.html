@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
-    
+      <div class="fill col-sm-12 filter">
+          <input type="text" class="form-control">
+      </div>
   </div>
   
   <div class="row">
@@ -43,22 +45,33 @@
     </option>
   </select>
   </div>
-  
   </div>
-  <div class="row " >
-      <div class="col-sm-6" *ngFor="let employee of employees">
+  <div class ="row " >
+      <div class="col-sm-4 filter" *ngFor="let employee of employees">
           <div class="card">
+            <a [routerLink]="['/details' , employee.employeeCode]">
               <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
-              <div class="avatar">
-                  <img src="./assets/images/img1.jpg" alt="" />
+              <div class="row">
+                <div class="content col-sm-6">
+                  <div class="avatar">
+                    <img src="./assets/images/img1.jpg" alt="" />
+                  </div>  
+                  <p>{{employee.displayName}} <br>
+                     {{employee.emailAddress}}<br>
+                  </p>
               </div>
-              <div class="content">
-                  <p>{{employee.name}} <br>
-                     {{employee.email}}<br>
-                    </p>
-                  <p><button type="button" class="btn btn-default">Know me</button></p>
+              <div class="badges col-sm-6">
+                      <h6>Skills</h6>
+                      <span class="badge badge-primary">Javascript</span>
+                      <span class="badge badge-primary">Angular 4</span>
+                      <span class="badge badge-primary">React Js</span>
+                      <span class="badge badge-primary">Node Js</span>
+                  
               </div>
+              </div>
+            </a>
+            </div>
+            
           </div>
       </div>    
-    </div>
     </div>
