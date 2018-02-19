@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup , FormControl , Validators } from '@angular/forms';
-import { ListService } from '../services/list.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +9,7 @@ import { ListService } from '../services/list.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private service : ListService) { }
+  constructor(private service : AuthService) { }
 
   ngOnInit() {
   }

@@ -1,20 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:rgb(52, 176, 201) !important">
+  <span class="navbar-brand">
+      <img src="https://image.ibb.co/kC5mVn/Logo_Alt.jpg" height="36px" alt="CyberGroup">
+  </span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active" routerLinkActive = "active current">
-        <a class="nav-link" routerLink="/login">Login <span class="sr-only">(current)</span></a>
+      <li class="nav-item" routerLinkActive = "active current">
+          <a class="nav-link" *ngIf='authService.isLoggedIn()' routerLink="/dashboard">Dashboard</a>
       </li>
       <li class="nav-item" routerLinkActive = "active current">
-        <a class="nav-link" routerLink="/userlist">User List</a>
+          <a class="nav-link" *ngIf='authService.isLoggedIn()' routerLink="/userlist">User List</a>
       </li>
-      
+      <li class="nav-item" routerLinkActive = "active current">
+          <a class="nav-link" *ngIf='authService.isLoggedIn() && authService.currentUser.userType == "ADMIN"' routerLink="/admindashboard">Admin Dashboard</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
       <li class="nav-item">
-        <a class="nav-link " routerLink="/register">Register</a>
+          <a class="nav-link" *ngIf='!authService.isLoggedIn()' routerLink="/register">Register</a>
+      </li>
+      <li class="nav-item active" routerLinkActive = "active current">
+          <span class="nav-link" *ngIf='authService.isLoggedIn()'>Hi {{authService.currentUser.emailAddress}}!</span>
+      </li>
+      <li class="nav-item active" routerLinkActive = "active current">
+          <a class="nav-link" *ngIf='!authService.isLoggedIn()' routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item active" routerLinkActive = "active current">
+          <a class="nav-link" *ngIf='authService.isLoggedIn()' (click)="authService.logout()">Logout <span class="sr-only">(current)</span></a>
       </li>
     </ul>
     
