@@ -7,7 +7,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material';
+import { MatInputModule, MatDatepicker } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,9 +15,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { FilterPipe} from './user-list/filter.pipe';
-
-
+import {MatSelectModule} from '@angular/material/select';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -29,6 +27,7 @@ import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 // Fusion Charts
@@ -55,8 +54,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     DashboardComponent,
     GraphComponent,
     AdmindashboardComponent,
-    AccessdeniedComponent,
-    FilterPipe 
+    AccessdeniedComponent 
   ],
   imports: [
     BrowserModule ,
@@ -69,7 +67,9 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     MatInputModule,
     MatButtonModule,
     MatButtonToggleModule,
+    MatDatepickerModule,
     MatIconModule,
+    MatSelectModule,
     FormsModule, ReactiveFormsModule,
     RouterModule.forRoot([ {
       path : '' , 

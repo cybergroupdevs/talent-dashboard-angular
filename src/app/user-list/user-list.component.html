@@ -12,7 +12,14 @@
   
   <div class="row">
     <div class="filter col-sm-4" >
-    <select 
+        <mat-select placeholder="Favorite food">
+            <mat-option *ngFor="let food of categoryList" [value]="food.id">
+              {{ food.name }}
+            </mat-option>
+          </mat-select>
+    
+    
+      <!-- <mat-select 
       ngModel 
       name="category" 
       id="category" 
@@ -22,7 +29,7 @@
     <option *ngFor="let category of categoryList" [value]="category.id">
       {{category.name}}
     </option>
-  </select>
+  </mat-select> -->
   </div>
   <div class="filter col-sm-4" >
     <select 

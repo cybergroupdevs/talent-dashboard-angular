@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup , FormControl , Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { resolve } from 'path';
 
 @Component({
   selector: 'app-register',
@@ -9,21 +11,50 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private service : AuthService) { }
+  invalidRegistration = false;
+  constructor(private service : AuthService, 
+              private _router : Router) { }
 
   ngOnInit() {
   }
 
   submit(f){
-    this.service.registerUser(f.value)
-    .subscribe(response =>{
-      console.log(f.value);
-      console.log(response.status);;
-      console.log("registered successfully!");
-    },
+  //   this.service.registerUser(f.value)
+  //   .subscribe(response =>{
+  //     console.log(f.value);
+  //     console.log(response.status);;
+  //     console.log("registered successfully!");
+  //   },
+  // error=>{
+  //   alert("Error occured");
+  // })
+
+
+  this.service.registerUser(f.value)
+  .subscribe(response =>{
+    if(response){
+      if(response.status == 200)
+      {
+        if(!JSON.parse(response['_body']).status)
+        {
+          this.invalidRegistration = true ;
+          console.log(JSON.parse(response['_body']).mesage)  ;
+          
+        }
+        else
+        {
+          this._router.navigate(['/dashboard']);
+        }
+      }
+    }
+    else{
+      this.invalidRegistration = true;
+    }
+  },
   error=>{
     alert("Error occured");
   })
+
   }
 
   genderType = [ {
