@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup , FormControl , Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { resolve } from 'path';
 
 @Component({
   selector: 'app-register',

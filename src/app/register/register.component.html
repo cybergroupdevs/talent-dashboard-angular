@@ -16,7 +16,6 @@
         </div>
 
         <div class="form-group">
-        <label for="text"><b>First Name</b></label>
         <input 
           type="text"
           ngModel
@@ -28,7 +27,6 @@
           required/>
         </div>
         <div class="form-group">
-        <label for="text"><b>Middle Name</b></label>
         <input 
           type="text"
           ngModel   
@@ -38,7 +36,6 @@
           required/>
         </div>
         <div class="form-group">
-        <label for="text"><b>Last Name</b></label>
         <input 
           type="text" 
           ngModel 
@@ -48,7 +45,6 @@
           required/>
         </div>
         <div class="form-group">
-        <label for="text"><b>Employee Code</b></label>
         <input 
           type="text" 
           placeholder="Enter Employee Code" 
@@ -190,10 +186,9 @@
   </mat-card-title>
   <mat-card-content>
     <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
-    <mat-step label="Personal Detail 1">
+    <mat-step label="Personal Detail 1" layout = "column">
         <ng-template matStepLabel>Personal Details</ng-template>
-     
-          <label for="text"><b>First Name</b></label>
+        <mat-form-field>
           <input 
           type="text" 
           matInput
@@ -203,8 +198,8 @@
           class="form-control"
           placeholder="Enter First Name" 
           required/>
-        
-        <label for="text"><b>Middle Name</b></label>
+        </mat-form-field>
+        <mat-form-field>
         <input 
           type="text"
           ngModel 
@@ -213,26 +208,27 @@
           placeholder="Enter Middle Name" 
           name="middleName" 
           required/>
-          
-
-          <label for="text"><b>Last Name</b></label>
+        </mat-form-field>
+          <mat-form-field>
           <input 
             type="text" 
             ngModel 
+            matInput
             #lastName="ngModel"
             placeholder="Enter Last Name" 
             name="lastName" 
             required/>
-
-            <label for="dateOfBirth"><b>Date of Birth</b></label>
+          </mat-form-field>
+            <mat-form-field>
             <input 
               type="date"  
               name="dateOfBirth" 
               ngModel 
               matInput
               #dateOfBirth="ngModel"
+              placeholder="Enter Date of birth" 
               required/>
-        
+            </mat-form-field>
               <!-- <mat-form-field>
                   <input matInput [matDatepicker]="picker"  name="dateOfBirth" 
               ngModel 
@@ -242,17 +238,32 @@
                   <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field> -->
 
-              <label for="gender"> Gender </label>
+            <!-- <mat-form-feild>
               <mat-select 
                 ngModel
                 name="gender" 
                 id="gender" 
-                class="form-control"
+                placeholder="Select Gender" 
                 #gender = "ngModel">
                 <mat-option *ngFor="let gender of genderType"  [value]="gender.id">
                   {{gender.name}}
                 </mat-option>
               </mat-select>
+            </mat-form-feild>     -->
+          
+            <mat-form-field>
+              <mat-select
+                ngModel
+                name="gender" 
+                id="gender" 
+                placeholder="Select Gender"
+                #gender = "ngModel">
+                <mat-option *ngFor="let gender of genderType" [value]="gender.id">
+                    {{ gender.name }}
+                </mat-option>
+              </mat-select>
+              </mat-form-field>
+
         <div>    
           <button mat-button matStepperNext>Next</button>
         </div>
@@ -261,7 +272,8 @@
     <mat-step label="Contact Details">
         <ng-template matStepLabel>Contact Details</ng-template>
       
-        <mat-label for="email"><b>Email</b></mat-label>
+    
+        <mat-form-field>
         <input 
         type="email" 
         matInput
@@ -270,9 +282,10 @@
         #emailAddress="ngModel"
         class="form-control"
         placeholder="Enter Email"  
-        required/> 
+        required/>
+        </mat-form-field> 
 
-          <mat-label for="phoneNumber"><b>Mobile Number</b></mat-label>
+          <mat-form-field>
           <input 
             type="text" 
             placeholder="Enter Phone Number" 
@@ -281,6 +294,7 @@
             #mobileNumber="ngModel"
             name="mobileNumber" 
             required/>
+            </mat-form-field>
         
               <!-- <mat-form-field>
                   <input matInput [matDatepicker]="picker"  name="dateOfBirth" 
@@ -291,9 +305,12 @@
                   <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field> -->
 
-        <div>    
-          <button mat-button matStepperNext>Next</button>
-        </div>
+
+                <div>    
+                    <button mat-button matStepperPrevious>Back</button>
+             
+                    <button mat-button matStepperNext>Next</button>
+                </div>
     </mat-step>
 
 
@@ -301,8 +318,8 @@
 
     <mat-step label="Profile Details">
         <ng-template matStepLabel>Skill Details</ng-template>
-
-        <label for="text"><b>Employee Code</b></label>
+       
+        <mat-form-field>
         <input 
           type="text" 
           placeholder="Enter Employee Code" 
@@ -311,9 +328,9 @@
           #employeeCode="ngModel"
           name="employeeCode" 
           required/>
+          </mat-form-field>
 
-        <mat-label for="">Skills</mat-label>
-        <mat-select 
+        <!-- <mat-select 
           ngModel 
           name="skills" 
           id="skills" 
@@ -324,23 +341,51 @@
         <mat-option *ngFor="let category of categoryList" [value]="category.id">
           {{category.name}}
         </mat-option>
-      </mat-select>
+      </mat-select> -->
 
-      <mat-label for="userType"> Role </mat-label>
+      <mat-form-field>
+          <mat-select
+            ngModel
+            name="skills" 
+            id="skills" 
+            placeholder="Select Skills"
+            multiple
+            #gender = "ngModel">
+            <mat-option *ngFor="let category of categoryList" [value]="category.id">
+                {{category.name}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <!-- <mat-label for="userType"> Role </mat-label>
       <mat-select 
         ngModel
         name="userType" 
         id="userType" 
         class="form-control">
       <mat-option *ngFor="let type of userType"  [value]="type.id">{{type.name}}</mat-option>
-      </mat-select>
-        <div>    
+      </mat-select> -->
+
+      <mat-form-field>
+          <mat-select
+            ngModel
+            name="userType" 
+            id="userType" 
+            placeholder="Select Role"
+            >
+            <mat-option *ngFor="let type of userType"  [value]="type.id">{{type.name}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <div>    
+          <button mat-button matStepperPrevious>Back</button>
+   
           <button mat-button matStepperNext>Next</button>
-        </div>
+      </div>
     </mat-step>
     <mat-step label="Residence">
         <ng-template matStepLabel>Residential Address</ng-template>
-        <mat-label for="location"><b>location</b></mat-label>
+        <mat-form-field>
         <input  
           matInput
           type="text" 
@@ -349,9 +394,10 @@
           ngModel 
           #location="ngModel"
           required/>
+        </mat-form-field>
 
 
-          <mat-label for="address"><b>Address</b></mat-label>
+          <mat-form-field>
           <input 
             type="text" 
             placeholder=" Enter address" 
@@ -360,9 +406,10 @@
             ngModel 
             #address="ngModel"
             required/>
+            </mat-form-field>
           
-          <mat-label for="city"><b>City</b></mat-label>
-          <input 
+          <mat-form-field>
+            <input 
             type="text" 
             matInput
             placeholder="Enter City" 
@@ -370,7 +417,9 @@
             ngModel 
             #city="ngModel"
             required/>
-            <mat-label for="country"><b>Country</b></mat-label>
+          </mat-form-field>
+          
+          <mat-form-field>
             <input 
                 type="text" 
                 placeholder="Enter country" 
@@ -379,28 +428,33 @@
                 ngModel 
                 #country ="ngModel"
                 required/>
-            <div>    
-                <button mat-button matStepperNext>Next</button>
-            </div>
+          </mat-form-field>
+          <div>    
+              <button mat-button matStepperPrevious>Back</button>
+       
+              <button mat-button matStepperNext>Next</button>
+          </div>
       </mat-step>
       <mat-step label="Set Password">
-      <mat-label for="password"><b>Password</b></mat-label>
-      <input 
-        type="password"
-        placeholder="Enter Password" 
-        name="password"
-        ngModel 
-        matInput
-        #password="ngModel"
-        required/>
+      <mat-form-field>
+        <input 
+          type="password"
+          placeholder="Enter Password" 
+          name="password"
+          ngModel 
+          matInput
+          #password="ngModel"
+          required/>
+      </mat-form-field>
     
-      <mat-label for="psw-repeat"><b>Repeat Password</b></mat-label>
-      <input 
+      <mat-form-field>
+        <input 
         type="password" 
         placeholder="Repeat Password" 
         matInput
         name="psw-repeat" 
         required/>
+      </mat-form-field>
 
         <div class="clearfix">
             <button type="button" mat-button matStepperPrevious onclick="" class="cancelbtn">Cancel</button>
@@ -412,6 +466,11 @@
           <div *ngIf="invalidRegistration" class="alert alert-danger">
             User already Exist ! 
           </div>
+                
+          <div *ngIf= "!invalidRegistration" class="alert alert-success">
+             Successfully Registered , You will be naviagated to Login page soon ! 
+            </div>
+
           <div *ngIf="invalidRegistration">
             <button mat-button matStepperPrevious>Back</button>
             <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
