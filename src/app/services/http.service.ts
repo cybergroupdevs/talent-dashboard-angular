@@ -37,5 +37,19 @@ export class HttpService {
     return this.http.get(this.nodeAPI + '/listskill', options)
       .map(response => response.json());
   }
+
+  getEmployeeDetails(userId : string){
+    let headers = new Headers();
+    let token = localStorage.getItem('token');
+    headers.append('token',token);
+    headers.append('userId' , userId);
+
+    let options = new RequestOptions({
+      headers: headers
+    });
+
+    return this.http.get('https://talent-dashboard-app.herokuapp.com/userdetail' , options)
+    .map(response => response.json());
+  }
   
 }

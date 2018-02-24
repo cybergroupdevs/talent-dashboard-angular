@@ -99,7 +99,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
       canActivate: [AuthGuard]
     },
     {
-      path : 'details/:username' ,
+      path : 'details/:id' ,
       component : DetailsComponent,
       canActivate: [AuthGuard]
     },

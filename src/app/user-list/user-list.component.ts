@@ -42,6 +42,9 @@ export class UserListComponent implements OnInit , OnDestroy {
     this.employees.filter(emp => emp.displayName.toLowerCase().includes(query.toLowerCase())) : 
     this.employees ; 
   }
+
+  
+
   categoryList = [ {
     id:1 , name:"skill1"
   },

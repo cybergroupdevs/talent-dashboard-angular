@@ -67,7 +67,7 @@
   <div class ="row " >
       <div class="col-sm-4 filter" *ngFor="let employee of filteredEmployee ">
           <div class="card">
-            <a [routerLink]="['/details' , employee.employeeCode]">
+            <a [routerLink]="['/details' , employee._id]">
               <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
               <div class="row">
                 <div class="content col-sm-6">
