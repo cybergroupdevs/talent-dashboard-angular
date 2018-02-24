@@ -1,0 +1,8 @@
+.edit-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-container > * {
+    width: 100%;
+  }

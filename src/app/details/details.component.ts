@@ -2,6 +2,8 @@ import { Component, OnInit , Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '../services/http.service';
 import {DatePipe} from '@angular/common';
+import { AuthService } from '../services/auth.service';
+
 
 
 @Component({
@@ -14,7 +16,8 @@ export class DetailsComponent implements OnInit {
   employeeId : string ; 
   employee : any ; 
   constructor(private route : ActivatedRoute , 
-              private service : HttpService) {  }
+              private service : HttpService,
+              private authService : AuthService ) {  }
 
   ngOnInit() {
       this.route.params

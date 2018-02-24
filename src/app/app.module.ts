@@ -19,6 +19,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import {EditEmployeeComponent} from './edit-employee/edit-employee.component';
 import { FooterComponent } from './footer/footer.component';
 import { DetailsComponent } from './details/details.component';
 import { UserListComponent } from './user-list/user-list.component';
@@ -29,8 +30,6 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatChipsModule} from '@angular/material/chips';
-
-
 
 // Fusion Charts
 import * as FusionCharts from 'fusioncharts';
@@ -51,6 +50,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     FooterComponent,
     DetailsComponent,
     UserListComponent,
+    EditEmployeeComponent,
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
@@ -105,6 +105,11 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
       path : 'details/:id' ,
       component : DetailsComponent,
       canActivate: [AuthGuard]
+    },
+    {
+      path : 'editEmployee/:id' ,
+      component : EditEmployeeComponent,
+      canActivate: [AuthGuard , AdminAuthGuard]
     },
     {
       path : 'register' ,

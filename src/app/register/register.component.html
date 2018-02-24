@@ -1,192 +1,12 @@
 <div class="Absolute-Center is-Responsive">
   <form #f="ngForm" name="f" (ngSubmit)="submit(f)"  ngNativeValidate >
-<!--      <h1>Sign Up</h1>
-        <p>Please fill in this form to create an account.</p>
-      
-        <div class="form-group">
-        <label for="emailAddress"><b>Email</b></label>
-        <input 
-          type="email" 
-          ngModel 
-          name="emailAddress"  
-          #emailAddress="ngModel"
-          class="form-control"
-          placeholder="Enter Email"  
-          required/>
-        </div>
-
-        <div class="form-group">
-        <input 
-          type="text"
-          ngModel
-          name="firstName"   
-          #firstName="ngModel"
-          class="form-control"
-          placeholder="Enter First Name" 
-           
-          required/>
-        </div>
-        <div class="form-group">
-        <input 
-          type="text"
-          ngModel   
-          #middleName="ngModel" 
-          placeholder="Enter Middle Name" 
-          name="middleName" 
-          required/>
-        </div>
-        <div class="form-group">
-        <input 
-          type="text" 
-          ngModel 
-          #lastName="ngModel"
-          placeholder="Enter Last Name" 
-          name="lastName" 
-          required/>
-        </div>
-        <div class="form-group">
-        <input 
-          type="text" 
-          placeholder="Enter Employee Code" 
-          ngModel 
-          #employeeCode="ngModel"
-          name="employeeCode" 
-          required/>
-        </div>
-        <div class="form-group">
-        <label for="phoneNumber"><b>Mobile Number</b></label>
-        <input 
-          type="text" 
-          placeholder="Enter Phone Number" 
-          ngModel 
-          #mobileNumber="ngModel"
-          name="mobileNumber" 
-          required/>
-        </div>
-        <div class="form-group">
-        <label for="dateOfBirth"><b>Date of Birth</b></label>
-        <input 
-          type="date"  
-          name="dateOfBirth" 
-          ngModel 
-          #dateOfBirth="ngModel"
-          required/>
-        </div>
-        <div class="form-group">
-            <label for="gender"> Gender </label>
-            <select 
-              ngModel
-              name="gender" 
-              id="gender" 
-              class="form-control"
-              #gender = "ngModel">
-              <option *ngFor="let gender of genderType"  [value]="gender.id">
-                {{gender.name}}
-              </option>
-            </select>
-          </div>
-        
-          <div class="form-group">
-              <label for="">Skills</label>
-               <select 
-                 ngModel 
-                 name="skills" 
-                 id="skills" 
-                 class="form-control"
-                 #skills = "ngModel"
-                 multiple
-                 required>
-               <option *ngFor="let category of categoryList" [value]="category.id">
-                 {{category.name}}
-               </option>
-             </select>
-            </div>
-          <div class="form-group">
-            <label for="userType"> Role </label>
-            <select 
-              ngModel
-              name="userType" 
-              id="userType" 
-              class="form-control">
-            <option value="0" class="">Select Any</option>
-            <option *ngFor="let type of userType"  [value]="type.id">{{type.name}}</option>
-            </select>
-          </div>  
-        <div class="form-group">
-        <label for="location"><b>location</b></label>
-        <input 
-          type="text" 
-          placeholder="Enter location" 
-          name="location" 
-          ngModel 
-          #location="ngModel"
-          required/>
-        </div>
-        <div class="form-group">
-        <label for="address"><b>Address</b></label>
-        <input 
-          type="text" 
-          placeholder=" Enter address" 
-          name="address" 
-          ngModel 
-          #address="ngModel"
-          required/>
-        </div>
-        <div class="form-group">  
-        <label for="city"><b>City</b></label>
-        <input 
-          type="text" 
-          placeholder="Enter City" 
-          name="city" 
-          ngModel 
-          #city="ngModel"
-          required/>
-        </div>
-        <div class="form-group">  
-            <label for="country"><b>Country</b></label>
-            <input 
-              type="text" 
-              placeholder="Enter country" 
-              name="country" 
-              ngModel 
-              #country ="ngModel"
-              required/>
-            </div>
-
-      <div class="form-group">
-        <label for="password"><b>Password</b></label>
-        <input 
-          type="password"
-          placeholder="Enter Password" 
-          name="password"
-          ngModel 
-          #password="ngModel"
-          required/>
-      </div>
-      <div class="form-group">
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input 
-          type="password" 
-          placeholder="Repeat Password" 
-          name="psw-repeat" 
-          required/>
-      </div> 
-      <div class="form-group">
-        <div class="clearfix">
-          <button type="button" onclick="" class="cancelbtn">Cancel</button>
-          <button type="submit" class="signupbtn" >Sign Up</button>
-        </div>
-        </div>
-      </div>
-    </form>
-</div> -->
-<mat-card >
-  <mat-card-title>
-    Register
-  </mat-card-title>
-  <mat-card-content>
-    <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
-    <mat-step label="Personal Detail 1" layout = "column">
+    <mat-card >
+     <mat-card-title>
+      Register
+    </mat-card-title>
+    <mat-card-content>
+      <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+      <mat-step label="Personal Detail 1" layout = "column">
         <ng-template matStepLabel>Personal Details</ng-template>
         <mat-form-field>
           <input 
@@ -229,28 +49,7 @@
               placeholder="Enter Date of birth" 
               required/>
             </mat-form-field>
-              <!-- <mat-form-field>
-                  <input matInput [matDatepicker]="picker"  name="dateOfBirth" 
-              ngModel 
-              matInput
-              #dateOfBirth="ngModel"placeholder="Choose a date">
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field> -->
-
-            <!-- <mat-form-feild>
-              <mat-select 
-                ngModel
-                name="gender" 
-                id="gender" 
-                placeholder="Select Gender" 
-                #gender = "ngModel">
-                <mat-option *ngFor="let gender of genderType"  [value]="gender.id">
-                  {{gender.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-feild>     -->
-          
+                  
             <mat-form-field>
               <mat-select
                 ngModel
@@ -271,8 +70,6 @@
 
     <mat-step label="Contact Details">
         <ng-template matStepLabel>Contact Details</ng-template>
-      
-    
         <mat-form-field>
         <input 
         type="email" 
@@ -296,16 +93,6 @@
             required/>
             </mat-form-field>
         
-              <!-- <mat-form-field>
-                  <input matInput [matDatepicker]="picker"  name="dateOfBirth" 
-              ngModel 
-              matInput
-              #dateOfBirth="ngModel"placeholder="Choose a date">
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field> -->
-
-
                 <div>    
                     <button mat-button matStepperPrevious>Back</button>
              

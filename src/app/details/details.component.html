@@ -8,15 +8,30 @@
       <div class="badges" >
           <h6>Skills</h6>
           <mat-chip-list >
-              <mat-chip *ngFor = "let skill of employee.skills" >{{skill}}</mat-chip>
+              <mat-chip color="accent" *ngFor = "let skill of employee.skills" >{{skill}}</mat-chip>
           </mat-chip-list>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <h5>Name  : {{employee.displayName}} </h5>
         <h5>Phone : {{employee.mobileNumber}}</h5>
         <h5>BOD   : {{employee.dateOfBirth | date:'mediumDate'}}</h5>
         <h5>Email : {{employee.emailAddress}}</h5>
+    </div>
+    <div class="col-md-2">
+        <mat-chip-list *ngIf='authService.currentUser.userType == "ADMIN"'>
+            <a [routerLink]="['../../editEmployee/' , employee._id]">
+             <button mat-button> Update </button> 
+             </a>
+          <!-- <h4>  <mat-chip color="primary" >
+                  Update Employee
+                </mat-chip> 
+                        </h4>
+                      </a>    --> 
+
+          <h4>
+            <mat-chip color="primary" >Delete Employee</mat-chip></h4>
+        </mat-chip-list>
     </div>
     <!-- <div class="col-md-4">
       <div class="featured">

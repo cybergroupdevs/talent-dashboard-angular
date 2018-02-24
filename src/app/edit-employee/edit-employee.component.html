@@ -1,0 +1,208 @@
+<div class="Absolute-Center is-Responsive">
+        <form #f="ngForm" name="f" (ngSubmit)="updateEmployee(f)"  ngNativeValidate >
+          <mat-card >
+           <mat-card-title>
+            Register
+          </mat-card-title>
+          <mat-card-content>
+            <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+                <mat-step label="Personal Detail 1" layout = "column">
+                    <ng-template matStepLabel>Personal Details</ng-template>
+                    <div class="edit-container">
+                            <mat-form-field>
+                                <input 
+                                type="text" 
+                                matInput
+                                [(ngModel)] = "employee.firstName" 
+                                name="firstName"   
+                                #firstName="ngModel"
+                                class="form-control"
+                                placeholder="Enter First Name" 
+                                required/>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input 
+                                type="text"
+                                [(ngModel)] = "employee.middleName" 
+                                matInput  
+                                #middleName="ngModel" 
+                                placeholder="Enter Middle Name" 
+                                name="middleName" 
+                                />
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input 
+                                type="text" 
+                                [(ngModel)] = "employee.lastName" 
+                                matInput
+                                #lastName="ngModel"
+                                placeholder="Enter Last Name" 
+                                name="lastName" 
+                                />
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input 
+                                  type="date"  
+                                  name="dateOfBirth" 
+                                  [(ngModel)] = "employee.dateOfBirth" 
+                                  matInput
+                                  #dateOfBirth="ngModel"
+                                  placeholder="Enter Date of birth" 
+                                  required/>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-select
+                                [(ngModel)] = "employee.gender" 
+                                    name="gender" 
+                                    id="gender" 
+                                    placeholder="Select Gender"
+                                    #gender = "ngModel">
+                                    <mat-option *ngFor="let gender of genderType" [value]="gender.id">
+                                        {{ gender.name }}
+                                    </mat-option>
+                                  </mat-select>
+                                  </mat-form-field>
+                    
+                            <div>    
+                              <button mat-button matStepperNext>Next</button>
+                            </div>
+
+                    </div>
+                </mat-step>
+                    
+                <mat-step label="Contact Details">
+                    <ng-template matStepLabel>Contact Details</ng-template>
+                        <div class="edit-container">
+                            <mat-form-field>
+                            <input 
+                            type="email" 
+                            matInput
+                        [(ngModel)] = "employee.emailAddress"
+                            name="emailAddress"  
+                            #emailAddress="ngModel"
+                            class="form-control"
+                            placeholder="Enter Email"  
+                            required/>
+                            </mat-form-field> 
+                    
+                              <mat-form-field>
+                              <input 
+                                type="text" 
+                                placeholder="Enter Phone Number" 
+                                [(ngModel)] = "employee.mobileNumber"
+                                matInput
+                                #mobileNumber="ngModel"
+                                name="mobileNumber" 
+                                required/>
+                                </mat-form-field>
+                            
+                                <div>    
+                                    <button mat-button matStepperPrevious>Back</button>
+                                 
+                                    <button mat-button matStepperNext>Next</button>
+                                </div>
+                            </div>
+                    </mat-step>
+                    
+                    <mat-step label="Profile Details">
+                        <ng-template matStepLabel>Skill Details</ng-template>
+                        <div class="edit-container">   
+                            <mat-form-field>
+                            <input 
+                              type="text" 
+                              placeholder="Enter Employee Code" 
+                              [(ngModel)] = "employee.employeeCode"
+                              matInput
+                              #employeeCode="ngModel"
+                              name="employeeCode" 
+                              required/>
+                              </mat-form-field>
+                
+                          <mat-form-field>
+                              <mat-select
+                                [(ngModel)]="employee.skills"
+                                name="skills" 
+                                id="skills" 
+                                placeholder="Select Skills"
+                                multiple
+                                #gender = "ngModel">
+                                <mat-option *ngFor="let skill of skills" [value]="skills.name">
+                                    {{skill.name}}
+                                </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                          <!-- <mat-form-field>
+                              <mat-select
+                                ngModel
+                                name="userType" 
+                                id="userType" 
+                                placeholder="Select Role"
+                                >
+                                <mat-option *ngFor="let type of userType"  [value]="type.id">{{type.name}}</mat-option>
+                              </mat-select>
+                          </mat-form-field> -->
+                          <div>    
+                              <button mat-button matStepperPrevious>Back</button>
+                       
+                              <button mat-button matStepperNext>Next</button>
+                          </div>
+                        </div>  
+                    </mat-step>
+                    <mat-step label="Residence">
+                        <ng-template matStepLabel>Residential Address</ng-template>
+                        <div class="edit-container">   
+                            <mat-form-field>
+                            <input  
+                              matInput
+                              type="text" 
+                              placeholder="Enter location" 
+                              name="location" 
+                              [(ngModel)] = "employee.location" 
+                              #location="ngModel"
+                              required/>
+                            </mat-form-field>
+                              <mat-form-field>
+                              <input 
+                                type="text" 
+                                placeholder=" Enter address" 
+                                name="address" 
+                                matInput
+                                [(ngModel)] = "employee.address" 
+                                #address="ngModel"
+                                required/>
+                                </mat-form-field>
+                              
+                              <mat-form-field>
+                                <input 
+                                type="text" 
+                                matInput
+                                placeholder="Enter City" 
+                                name="city" 
+                                [(ngModel)] = "employee.city"
+                                #city="ngModel"
+                                required/>
+                              </mat-form-field>
+                              
+                              <mat-form-field>
+                                <input 
+                                    type="text" 
+                                    placeholder="Enter country" 
+                                    name="country"
+                                    matInput 
+                                    [(ngModel)] = "employee.country" 
+                                    #country ="ngModel"
+                                    required/>
+                              </mat-form-field>
+                              <div>    
+                                  <button mat-button matStepperPrevious>Back</button>
+                           
+                                  <button mat-button matStepperNext>Next</button>
+                              </div>
+                        </div>
+                    </mat-step>
+                    
+            </mat-horizontal-stepper>
+        </mat-card-content>
+        </mat-card>
+        </form>
+</div>
