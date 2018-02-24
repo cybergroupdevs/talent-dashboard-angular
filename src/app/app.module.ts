@@ -28,6 +28,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 
 // Fusion Charts
@@ -70,6 +72,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     MatDatepickerModule,
     MatIconModule,
     MatSelectModule,
+    MatChipsModule,
     FormsModule, ReactiveFormsModule,
     RouterModule.forRoot([ {
       path : '' , 

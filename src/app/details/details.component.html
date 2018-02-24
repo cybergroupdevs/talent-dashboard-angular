@@ -5,9 +5,11 @@
         <div class="d-flex justify-content-between">
             <img src="../../assets/images/placeholder.png">
         </div>
-      <div class="badges">
+      <div class="badges" >
           <h6>Skills</h6>
-          <span class="badge badge-primary" *ngFor = "let skill of employee.skills"> {{skill}} </span>
+          <mat-chip-list >
+              <mat-chip *ngFor = "let skill of employee.skills" >{{skill}}</mat-chip>
+          </mat-chip-list>
       </div>
     </div>
     <div class="col-md-6">
