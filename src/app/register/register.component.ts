@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  isLinear: boolean = true;
   invalidRegistration = false;
   constructor(private service : AuthService, 
               private _router : Router) { }

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit-employee.component.css']
 })
 export class EditEmployeeComponent implements OnInit {
-
+  isLinear: boolean = false;
   skills : any[]; 
   employeeId : string ;
   employee : any ; 
