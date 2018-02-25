@@ -18,20 +18,15 @@
         <h5>BOD   : {{employee.dateOfBirth | date:'mediumDate'}}</h5>
         <h5>Email : {{employee.emailAddress}}</h5>
     </div>
-    <div class="col-md-2">
-        <mat-chip-list *ngIf='authService.currentUser.userType == "ADMIN"'>
+    <div class="col-md-2" *ngIf='authService.currentUser.userType == "ADMIN"'>
+        <div class="filter" >
             <a [routerLink]="['../../editEmployee/' , employee._id]">
-             <button mat-button> Update </button> 
+              <button mat-raised-button color="warn">Update</button> 
              </a>
-          <!-- <h4>  <mat-chip color="primary" >
-                  Update Employee
-                </mat-chip> 
-                        </h4>
-                      </a>    --> 
-
-          <h4>
-            <mat-chip color="primary" >Delete Employee</mat-chip></h4>
-        </mat-chip-list>
+          </div>
+          <div class="filter">            
+               <button (click)="deleteEmployee()" mat-raised-button color="warn">Delete</button>                      
+          </div>
     </div>
     <!-- <div class="col-md-4">
       <div class="featured">

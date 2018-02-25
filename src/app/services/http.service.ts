@@ -52,4 +52,20 @@ export class HttpService {
     .map(response => response.json());
   }
   
+
+  deleleEmployee(employeeId){
+    let headers = new Headers();
+    let token = localStorage.getItem('token');
+    headers.append('token',token);
+    headers.append('userId' , employeeId);
+
+    let options = new RequestOptions({
+      headers: headers
+    });
+
+    return this.http.get(this.nodeAPI+'/deleteEmployee/'+employeeId , options)
+    .map(response => response.json());
+
+  }
+
 }
