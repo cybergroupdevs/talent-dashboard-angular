@@ -109,7 +109,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     {
       path : 'editEmployee/:id' ,
       component : EditEmployeeComponent,
-      canActivate: [AuthGuard , AdminAuthGuard]
+      canActivate: [AuthGuard]
     },
     {
       path : 'register' ,

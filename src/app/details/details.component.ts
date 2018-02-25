@@ -14,6 +14,7 @@ export class DetailsComponent implements OnInit {
 
   employeeId : string ; 
   employee : any ; 
+  currentUserEmail : any ; 
   constructor(private route : ActivatedRoute , 
               private service : HttpService,
               private authService : AuthService , 
@@ -34,6 +35,8 @@ getCurrentEmployeeDetail(){
           if(response.status == true)
           {
             this.employee =  response.data;
+            this.currentUserEmail = response.data.emailAddress;
+            console.log("MAIL of current user" + this.authService.currentUser.emailAddress )
             if(this.employee.gender == 'M')
               this.employee.gender = "Male"
             else

@@ -40,7 +40,7 @@
                                 name="lastName" 
                                 />
                             </mat-form-field>
-                            <mat-form-field>
+                            <!-- <mat-form-field>
                                 <input 
                                   type="date"  
                                   name="dateOfBirth" 
@@ -49,7 +49,7 @@
                                   #dateOfBirth="ngModel"
                                   placeholder="Enter Date of birth" 
                                   required/>
-                            </mat-form-field>
+                            </mat-form-field> -->
                             <mat-form-field>
                                 <mat-select
                                 [(ngModel)] = "employee.gender" 
@@ -57,7 +57,7 @@
                                     id="gender" 
                                     placeholder="Select Gender"
                                     #gender = "ngModel">
-                                    <mat-option *ngFor="let gender of genderType" [value]="gender.id" [(value)]="selected">
+                                    <mat-option *ngFor="let gender of genderType" [value]="gender.id" selected ="true" >
                                         {{ gender.name }}
                                     </mat-option>
                                   </mat-select>
@@ -120,13 +120,14 @@
                               </mat-form-field>
                 
                           <mat-form-field>
-                              <mat-select
+                              <mat-select 
+                              [formControl]="skillTest"
                                 [(ngModel)]="employee.skills"
                                 name="skills" 
                                 id="skills" 
                                 placeholder="Select Skills"
                                 multiple
-                                #gender = "ngModel">
+                             >
                                 <mat-option *ngFor="let skill of skills" [value]="skills.name">
                                     {{skill.name}}
                                 </mat-option>
@@ -185,10 +186,10 @@
                                 />
                               </mat-form-field>
                               
-                            <div class="button-row">
-                                <button mat-raised-button  (click) ="navigateToUserDetailPage()" color = "primary" >Cancel</button>
-                                <button type="submit" (click)="updateEmployee(f)"  mat-raised-button color="primary" >Update</button>
-                            </div>
+                                    <div class="button-row">
+                                            <button mat-raised-button  (click) ="navigateToUserDetailPage()" color = "primary" >Cancel</button>
+                                            <button type="submit" (click)="updateEmployee(f)"  mat-raised-button color="primary" >Update</button>
+                                    </div>
                         </div>
                     </mat-step>
                     
