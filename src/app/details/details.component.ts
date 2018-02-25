@@ -45,16 +45,34 @@ getCurrentEmployeeDetail(){
           }
           
         });
-
 }
 
-deleteEmployee(){
-  if( !confirm("Are you sure you want to delete this employee?")) return ; 
-    this.service.deleleEmployee(this.employeeId);
-    this.router.navigate(['/userlist']);
-}
- 
-
-
+  deleteEmployee(){
+    if( confirm("Are you sure you want to delete this employee?")) {
+      this.service.deleleEmployee(this.employeeId)
+      .subscribe(
+        response => {
+          if(response.status == true)
+          {
+            console.log("deleted successfully");  
+          }
+          else{
+            console.log(response.mesage);
+            alert(response.mesage);
+          }
+          this.router.navigate(['/userlist']);
+        },
+        (error : Response) => {
+          if(error.status === 400){}
+          else{
+            alert("Something unexpected occured");
+            console.log(error);
+          }
+          
+        });
+      
+    } 
+      
+  }
 
 }

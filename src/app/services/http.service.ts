@@ -47,23 +47,44 @@ export class HttpService {
       headers: headers
     });
 
-    return this.http.get('https://talent-dashboard-app.herokuapp.com/userdetail?userId='+userId , options)
+    return this.http.get( this.nodeAPI + '/userdetail?userId='+userId , options)
     .map(response => response.json());
   }
   
 
-  deleleEmployee(employeeId){
+  deleleEmployee(employeeId ){
     let headers = new Headers();
+    let body = JSON.stringify(
+      {
+        "userId" : employeeId
+    });    
     let token = localStorage.getItem('token');
     headers.append('token',token);
-    headers.append('userId' , employeeId);
-
+    headers.append('Content-Type' , 'application/json');
+    
     let options = new RequestOptions({
-      headers: headers
+      headers: headers , 
+      body : body
     });
-
-    return this.http.get(this.nodeAPI+'/deleteEmployee/'+employeeId , options)
+    debugger
+    return this.http.delete(this.nodeAPI + '/deleteEmployee' , options)
     .map(response => response.json());
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   }
 
