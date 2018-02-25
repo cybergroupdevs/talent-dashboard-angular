@@ -1,8 +1,8 @@
 <div class="Absolute-Center is-Responsive">
-        <form #f="ngForm" name="f" (ngSubmit)="updateEmployee(f)"  ngNativeValidate >
+    <form #f="ngForm" name="f"   ngNativeValidate >
           <mat-card >
            <mat-card-title>
-            Register
+            Update Profile - {{employee.employeeCode}}
           </mat-card-title>
           <mat-card-content>
             <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
@@ -18,7 +18,7 @@
                                 #firstName="ngModel"
                                 class="form-control"
                                 placeholder="Enter First Name" 
-                                required/>
+                                />
                             </mat-form-field>
                             <mat-form-field>
                                 <input 
@@ -57,14 +57,14 @@
                                     id="gender" 
                                     placeholder="Select Gender"
                                     #gender = "ngModel">
-                                    <mat-option *ngFor="let gender of genderType" [value]="gender.id">
+                                    <mat-option *ngFor="let gender of genderType" [value]="gender.id" [(value)]="selected">
                                         {{ gender.name }}
                                     </mat-option>
                                   </mat-select>
                                   </mat-form-field>
                     
-                            <div>    
-                              <button mat-button matStepperNext>Next</button>
+                            <div class="button-row">        
+                              <button mat-raised-button color="primary" matStepperNext>Next</button>
                             </div>
 
                     </div>
@@ -96,10 +96,10 @@
                                 required/>
                                 </mat-form-field>
                             
-                                <div>    
-                                    <button mat-button matStepperPrevious>Back</button>
+                                <div class="button-row">    
+                                    <button color="primary" mat-raised-button matStepperPrevious>Back</button>
                                  
-                                    <button mat-button matStepperNext>Next</button>
+                                    <button color="primary" mat-raised-button matStepperNext>Next</button>
                                 </div>
                             </div>
                     </mat-step>
@@ -108,14 +108,15 @@
                         <ng-template matStepLabel>Skill Details</ng-template>
                         <div class="edit-container">   
                             <mat-form-field>
-                            <input 
+                            <textarea 
                               type="text" 
-                              placeholder="Enter Employee Code" 
-                              [(ngModel)] = "employee.employeeCode"
+                              placeholder="Write bio here" 
+                              [(ngModel)] = "employee.bio"
                               matInput
                               #employeeCode="ngModel"
-                              name="employeeCode" 
-                              required/>
+                              name="bio" 
+                              >
+                              </textarea>
                               </mat-form-field>
                 
                           <mat-form-field>
@@ -131,21 +132,11 @@
                                 </mat-option>
                               </mat-select>
                           </mat-form-field>
-                          <!-- <mat-form-field>
-                              <mat-select
-                                ngModel
-                                name="userType" 
-                                id="userType" 
-                                placeholder="Select Role"
-                                >
-                                <mat-option *ngFor="let type of userType"  [value]="type.id">{{type.name}}</mat-option>
-                              </mat-select>
-                          </mat-form-field> -->
-                          <div>    
-                              <button mat-button matStepperPrevious>Back</button>
-                       
-                              <button mat-button matStepperNext>Next</button>
-                          </div>
+                          <div class="button-row">    
+                                <button color="primary" mat-raised-button matStepperPrevious>Back</button>
+                             
+                                <button color="primary" mat-raised-button matStepperNext>Next</button>
+                            </div>
                         </div>  
                     </mat-step>
                     <mat-step label="Residence">
@@ -159,7 +150,7 @@
                               name="location" 
                               [(ngModel)] = "employee.location" 
                               #location="ngModel"
-                              required/>
+                             />
                             </mat-form-field>
                               <mat-form-field>
                               <input 
@@ -169,7 +160,7 @@
                                 matInput
                                 [(ngModel)] = "employee.address" 
                                 #address="ngModel"
-                                required/>
+                                />
                                 </mat-form-field>
                               
                               <mat-form-field>
@@ -180,7 +171,7 @@
                                 name="city" 
                                 [(ngModel)] = "employee.city"
                                 #city="ngModel"
-                                required/>
+                                />
                               </mat-form-field>
                               
                               <mat-form-field>
@@ -191,13 +182,13 @@
                                     matInput 
                                     [(ngModel)] = "employee.country" 
                                     #country ="ngModel"
-                                    required/>
+                                />
                               </mat-form-field>
-                              <div>    
-                                  <button mat-button matStepperPrevious>Back</button>
-                           
-                                  <button mat-button matStepperNext>Next</button>
-                              </div>
+                              
+                            <div class="button-row">
+                                <button mat-raised-button  (click) ="navigateToUserDetailPage()" color = "primary" >Cancel</button>
+                                <button type="submit" (click)="updateEmployee(f)"  mat-raised-button color="primary" >Update</button>
+                            </div>
                         </div>
                     </mat-step>
                     

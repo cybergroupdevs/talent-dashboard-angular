@@ -34,6 +34,10 @@ getCurrentEmployeeDetail(){
           if(response.status == true)
           {
             this.employee =  response.data;
+            if(this.employee.gender == 'M')
+              this.employee.gender = "Male"
+            else
+            this.employee.gender = "Female"
             console.log("Detail page employee :" + this.employee);  
           }
         },
