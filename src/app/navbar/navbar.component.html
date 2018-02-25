@@ -22,15 +22,27 @@
       <li class="nav-item">
           <a class="nav-link" *ngIf='!authService.isLoggedIn()' routerLink="/register">Register</a>
       </li>
-      <li class="nav-item active" routerLinkActive = "active current">
+      <!-- <li class="nav-item active" routerLinkActive = "active current">
           <span class="nav-link" *ngIf='authService.isLoggedIn()'>Hi {{authService.currentUser.emailAddress}}!</span>
-      </li>
+      </li> -->
       <li class="nav-item active" routerLinkActive = "active current">
           <a class="nav-link" *ngIf='!authService.isLoggedIn()' routerLink="/login">Login</a>
       </li>
-      <li class="nav-item active" routerLinkActive = "active current">
+      <!-- <li class="nav-item active" routerLinkActive = "active current">
           <a class="nav-link" *ngIf='authService.isLoggedIn()' (click)="authService.logout()">Logout <span class="sr-only">(current)</span></a>
-      </li>
+      </li> -->
+
+
+      <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" *ngIf='authService.isLoggedIn()' href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="nav-link" *ngIf='authService.isLoggedIn()'>Hi {{authService.currentUser.emailAddress}}</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" *ngIf='authService.isLoggedIn()'  [routerLink]="['/details/' , authService.currentUser.userId ]" > My Profile</a>
+              <a class="dropdown-item" *ngIf='authService.isLoggedIn()' (click)="authService.logout()">Logout <span class="sr-only">(current)</span></a>
+            </div>
+          </li>
+
     </ul>
     
   </div>

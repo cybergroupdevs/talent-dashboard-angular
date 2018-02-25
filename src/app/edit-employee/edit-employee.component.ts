@@ -2,6 +2,7 @@ import { Component, OnInit  } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import {FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm} from '@angular/forms';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class EditEmployeeComponent implements OnInit {
   skills : any[]; 
   employeeId : string ;
   employee : any ; 
+  skillTest = new FormControl();
   genderType = [ {
     id:"F" , name:"Female"
   },

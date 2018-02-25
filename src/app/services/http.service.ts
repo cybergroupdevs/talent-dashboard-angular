@@ -63,7 +63,7 @@ export class HttpService {
     let options = new RequestOptions({
       headers: headers , 
     });
-    debugger
+
     return this.http.post(this.nodeAPI + '/updateEmployee' , body ,  options)
     .map(response => response.json());
 
@@ -88,7 +88,7 @@ export class HttpService {
       headers: headers , 
       body : body
     });
-    debugger
+   
     return this.http.delete(this.nodeAPI + '/deleteEmployee' , options)
     .map(response => response.json());
 
