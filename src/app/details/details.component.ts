@@ -1,9 +1,8 @@
-import { Component, OnInit , Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit , Input} from '@angular/core';
+import { Router , ActivatedRoute } from '@angular/router';
 import { HttpService } from '../services/http.service';
 import {DatePipe} from '@angular/common';
 import { AuthService } from '../services/auth.service';
-
 
 
 @Component({
@@ -17,7 +16,8 @@ export class DetailsComponent implements OnInit {
   employee : any ; 
   constructor(private route : ActivatedRoute , 
               private service : HttpService,
-              private authService : AuthService ) {  }
+              private authService : AuthService , 
+              private router : Router ) {  }
 
   ngOnInit() {
       this.route.params
@@ -27,7 +27,6 @@ export class DetailsComponent implements OnInit {
 }
 
 getCurrentEmployeeDetail(){
-
     this.employeeId = this.route.snapshot.paramMap.get('id');
     this.service.getEmployeeDetails(this.employeeId)
       .subscribe(
@@ -46,10 +45,34 @@ getCurrentEmployeeDetail(){
           }
           
         });
-
 }
- 
 
-
+  deleteEmployee(){
+    if( confirm("Are you sure you want to delete this employee?")) {
+      this.service.deleleEmployee(this.employeeId)
+      .subscribe(
+        response => {
+          if(response.status == true)
+          {
+            console.log("deleted successfully");  
+          }
+          else{
+            console.log(response.mesage);
+            alert(response.mesage);
+          }
+          this.router.navigate(['/userlist']);
+        },
+        (error : Response) => {
+          if(error.status === 400){}
+          else{
+            alert("Something unexpected occured");
+            console.log(error);
+          }
+          
+        });
+      
+    } 
+      
+  }
 
 }
