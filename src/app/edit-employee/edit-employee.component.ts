@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit-employee.component.css']
 })
 export class EditEmployeeComponent implements OnInit {
-
+  isLinear: boolean = false;
   skills : any[]; 
   employeeId : string ;
   employee : any ; 
@@ -79,9 +79,10 @@ export class EditEmployeeComponent implements OnInit {
                 });
           }
   
-  //         updateEmployee(f){
-  //         // call service with f.value
-  //           this.router.navigate(['/details' ,this.employeeId]);
-  // }
+        updateEmployee(f){
+          // call service with f.value
+            // this.router.navigate(['/details' ,this.employeeId]);
+            console.log('Updating employee');
+        }
   
 }
