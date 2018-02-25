@@ -79,9 +79,10 @@ export class EditEmployeeComponent implements OnInit {
                 });
           }
   
-  //         updateEmployee(f){
-  //         // call service with f.value
-  //           this.router.navigate(['/details' ,this.employeeId]);
-  // }
+        updateEmployee(f){
+          // call service with f.value
+            // this.router.navigate(['/details' ,this.employeeId]);
+            console.log('Updating employee');
+        }
   
 }
