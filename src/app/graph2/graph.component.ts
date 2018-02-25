@@ -2,15 +2,15 @@ import { HttpService } from './../services/http.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-graph',
+  selector: 'app-graph2',
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.css']
 })
-export class GraphComponent implements OnInit {
-    id = 'chart1';
+export class GraphComponent2 implements OnInit {
+    id = 'chart2';
     width = 500;
     height = 300;
-    type = 'column2d';
+    type = 'pie3d';
     dataFormat = 'json';
     dataSource;
     title = '';
@@ -26,6 +26,7 @@ export class GraphComponent implements OnInit {
                 // "numberprefix": "$",
                 "theme": "fint",
                 "exportEnabled": "1",
+                "showlegend": "1",
                 "exportMode": "client"
             },
             "data": [

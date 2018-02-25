@@ -1,3 +1,4 @@
+import { HttpService } from './../services/http.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup , FormControl , Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
@@ -11,10 +12,22 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RegisterComponent implements OnInit {
   isLinear: boolean = true;
   invalidRegistration = false;
+  skillList: {};
   constructor(private service : AuthService, 
+              private httpService : HttpService,
               private _router : Router) { }
 
   ngOnInit() {
+    this.httpService.getSkills()
+    .subscribe(response =>{
+      if(response){
+        console.log("skills fetched successfully!");
+        this.skillList = response.data;
+      }
+      else{
+        console.log("Error in fetching skills")
+      }
+    });
   }
 
   submit(f){
@@ -71,15 +84,14 @@ export class RegisterComponent implements OnInit {
               id : "USER" , 
               name : "User"
             }];
-
   categoryList = [ {
-    id:1 , name:"skill1"
+    id:'Android' , name:"Android"
   },
   {
-    id:2 , name:"skill2"
+    id:'Node JS' , name:"Node JS"
   },
   {
-    id:3 , name:"skill3"
+    id:'React JS' , name:"React JS"
   }];
 
 }

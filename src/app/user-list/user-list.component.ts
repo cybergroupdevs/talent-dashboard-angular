@@ -11,6 +11,7 @@ export class UserListComponent implements OnInit , OnDestroy {
   employees : any[];
   filteredEmployee : any[];
   subscription : Subscription ; 
+  skillList : {};
 
 
   constructor(private service : HttpService) { }
@@ -35,6 +36,16 @@ export class UserListComponent implements OnInit , OnDestroy {
           
         });
 
+    this.service.getSkills()
+    .subscribe(response =>{
+      if(response){
+        console.log("skills fetched successfully!");
+        this.skillList = response.data;
+      }
+      else{
+        console.log("Error in fetching skills")
+      }
+    });
   }
   
   filter(query : string ){
@@ -43,15 +54,24 @@ export class UserListComponent implements OnInit , OnDestroy {
     this.employees ; 
   }
 
+  public filterByGender(event){
+    this.filteredEmployee = (event.value[0]) ? 
+    this.employees.filter(emp => emp.gender.toLowerCase().includes(event.value[0].toLowerCase())) : 
+    this.employees ; 
+  }
+
+  public filterBySkills(event){
+    this.filteredEmployee = (event.value) ? 
+    this.employees.filter(emp => emp.skills.includes(event.value.toLowerCase()) || emp.skills.includes(event.value.toUpperCase())) : 
+    this.employees ; 
+  }
+
   
 
-  categoryList = [ {
-    id:1 , name:"skill1"
+  genderList = [ {
+    id:1 , name:"Male"
   },
   {
-    id:2 , name:"skill2"
-  },
-  {
-    id:3 , name:"skill3"
+    id:2 , name:"Female"
   }];
 }

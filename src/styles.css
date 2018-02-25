@@ -26,3 +26,11 @@ body{
     height: 50%;
 }
 
+.profile-pic{
+    padding: 5px;
+}
+
+.profile-pic img{
+    border-radius: 100%;
+    zoom: 40%
+}

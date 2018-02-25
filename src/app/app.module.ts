@@ -38,6 +38,7 @@ import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 import { FusionChartsModule } from 'angular4-fusioncharts';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { AccessdeniedComponent } from './accessdenied/accessdenied.component';
+import { GraphComponent2 } from './graph2/graph.component';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -55,6 +56,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     RegisterComponent,
     DashboardComponent,
     GraphComponent,
+    GraphComponent2,
     AdmindashboardComponent,
     AccessdeniedComponent 
   ],

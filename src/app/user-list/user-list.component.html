@@ -11,85 +11,57 @@
   </div>
   
   <div class="row">
-      <div class="filter col-sm-4" >
-          <select 
-            ngModel 
-            name="category" 
-            id="category" 
-            class="form-control" 
-            required>
-          <option value="0" class="">filter by Designation</option>
-          <option *ngFor="let category of categoryList" [value]="category.id">
-            {{category.name}}
-          </option>
-        </select>
-        </div>  
-    
-      <!-- <mat-select 
-      ngModel 
-      name="category" 
-      id="category" 
-      class="form-control " 
-      required>
-    <option value="0" class="">filter by Skills</option>
-    <option *ngFor="let category of categoryList" [value]="category.id">
-      {{category.name}}
-    </option>
-  </mat-select> -->
-  
+    <div class="filter col-sm-4" >
+      <mat-form-field>
+          <mat-select placeholder="Skill" (change)="filterBySkills($event)">
+            <mat-option *ngFor="let skill of skillList" [value]="skill.name">
+              {{ skill.name }}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+    </div>  
+    <div class="filter col-sm-4" >
+          <mat-form-field>
+              <mat-select placeholder="Gender" (change)="filterByGender($event)">
+                <mat-option *ngFor="let gender of genderList" [value]="gender.name">
+                  {{ gender.name }}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>  
   <div class="filter col-sm-4" >
-    <select 
-      ngModel 
-      name="category" 
-      id="category" 
-      class="form-control" 
-      required>
-    <option value="0" class="">filter by Designation</option>
-    <option *ngFor="let category of categoryList" [value]="category.id">
-      {{category.name}}
-    </option>
-  </select>
-  </div>
-  <div class="filter col-sm-4" >
-    <select 
-      ngModel 
-      name="category" 
-      id="category" 
-      class="form-control" 
-      required>
-    <option value="0" class="">filter by Project</option>
-    <option *ngFor="let category of categoryList" [value]="category.id">
-      {{category.name}}
-    </option>
-  </select>
+      <!-- <mat-form-field>
+          <mat-select placeholder="Skill">
+            <mat-option *ngFor="let category of categoryList" [value]="category.id">
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
+      </mat-form-field> -->
   </div>
   </div>
   <div class ="row " >
       <div class="col-sm-4 filter" *ngFor="let employee of filteredEmployee ">
-          <div class="card">
-            <a [routerLink]="['/details' , employee._id]">
-              <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
-              <div class="row">
-                <div class="content col-sm-6">
-                  <div class="avatar">
-                    <img src="./assets/images/img1.jpg" alt="" />
-                  </div>  
-                  <p>{{employee.displayName}} <br>
-                     {{employee.emailAddress}}<br>
-                  </p>
+        <mat-card class="example-card" style="min-height: 100%">
+            <mat-card-header>
+              <div mat-card-avatar class="profile-pic">
+                  <img mat-card-image src= "https://ui-avatars.com/api/?size=64&name={{employee.displayName.split(' ').join('+')}}" alt="Profile">
               </div>
-              <div class="badges col-sm-6">
-                      <h6>Skills</h6>
-                      <span class="badge badge-primary">Javascript</span>
-                      <span class="badge badge-primary">Angular 4</span>
-                      <span class="badge badge-primary">React Js</span>
-                      <span class="badge badge-primary">Node Js</span>
-                  
-              </div>
-              </div>
-            </a>
-            </div>
-            
+              <mat-card-title>{{employee.displayName}}</mat-card-title>
+              <mat-card-subtitle>{{employee.emailAddress}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                  {{employee.bio}}
+              </p>
+              <mat-chip-list>
+                  <mat-chip color="primary" *ngFor = "let skill of employee.skills" >{{skill}}</mat-chip>
+              </mat-chip-list>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button [routerLink]="['/details' , employee._id]">VIEW</button>
+            </mat-card-actions>
+          </mat-card>           
           </div>
-      </div>    
+      
+      </div>
     </div>
