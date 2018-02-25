@@ -18,7 +18,7 @@ export class EditEmployeeComponent implements OnInit {
     id:"F" , name:"Female"
   },
   {
-    id:"F" , name:"Male"
+    id:"M" , name:"Male"
   }];
 
   
@@ -34,6 +34,7 @@ export class EditEmployeeComponent implements OnInit {
       });
 
       this.getSkills();
+      console.log("skills" + this.skills);
   }
 
   getSkills(){
@@ -79,9 +80,53 @@ export class EditEmployeeComponent implements OnInit {
                 });
           }
   
-        updateEmployee(f){
-          // call service with f.value
-            // this.router.navigate(['/details' ,this.employeeId]);
+  navigateToUserDetailPage(){
+    this.router.navigate(['/details' ,this.employeeId]);
+  }
+
+
+  updateEmployee(f){
+    debugger
+    let editContent = {
+      "userId" : this.employeeId , 
+      "firstName": f.value.firstName,
+      "middleName": f.value.middleName,
+      "lastName": f.value.lastName,
+      "mobileNumber": f.value.mobileNumber,
+      "dateOfBirth": f.value.dateOfBirth,
+      "gender": f.value.gender,
+      "address": f.value.address,
+      "city": f.value.city,
+      "country": f.value.country,
+      "state": f.value.state,
+      "zipCode": f.value.zipCode,
+      "bio": f.value.bio,
+      "skills": f.value.skills,
+      "emailAddress": f.value.emailAddress,
+      "location": f.value.location
+    }
+
+    this.service.updateEmployee(editContent)
+    .subscribe(
+      response => {
+        if(response.status == true)
+        {
+          console.log("Updated successfully");  
+        }
+        else{
+          console.log(response.mesage);
+          alert(response.mesage);
+        }
+        this.router.navigate(['/userlist']);
+      },
+      (error : Response) => {
+        if(error.status === 400){}
+        else{
+          alert("Something unexpected occured");
+          console.log(error);
+        }
+      });
+    this.router.navigate(['/details' ,this.employeeId]);
             console.log('Updating employee');
         }
   

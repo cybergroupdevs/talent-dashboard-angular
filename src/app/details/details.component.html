@@ -17,11 +17,12 @@
         <h5>Phone : {{employee.mobileNumber}}</h5>
         <h5>DOB   : {{employee.dateOfBirth | date:'mediumDate'}}</h5>
         <h5>Email : {{employee.emailAddress}}</h5>
+        <h5>Gender : {{employee.gender}}</h5>
     </div>
     <div class="col-md-2" *ngIf='authService.currentUser.userType == "ADMIN"'>
         <div class="filter" >
             <a [routerLink]="['../../editEmployee/' , employee._id]">
-              <button mat-raised-button color="warn">Update</button> 
+              <button  mat-raised-button color="warn">Update</button> 
              </a>
           </div>
           <div class="filter">            
