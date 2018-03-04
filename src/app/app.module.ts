@@ -7,7 +7,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatDatepicker } from '@angular/material';
+import { MatInputModule, MatDatepicker, MatPaginator, MatPaginatorModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import {MatSelectModule} from '@angular/material/select';
+import {} from '@angular/material/paginator';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -76,6 +77,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     MatIconModule,
     MatSelectModule,
     MatChipsModule,
+    MatPaginatorModule,
     FormsModule, 
     RouterModule.forRoot([ {
       path : '' , 
