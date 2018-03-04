@@ -12,7 +12,7 @@ import { UserDetails } from "../model/UserDetails.interface";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  isLinear: boolean = true;
+  isLinear = true;
   invalidRegistration : boolean ;
 
   firstFormGroup : FormGroup ; 

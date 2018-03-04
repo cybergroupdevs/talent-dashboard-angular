@@ -5,62 +5,69 @@
       </mat-card-title>
 
       <mat-card-content>
-        <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
-          <mat-step label="Personal Detail 1" layout="column">
+        <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
+          <mat-step [stepControl]="firstFormGroup" layout="column">
             <form [formGroup]="firstFormGroup">
-              <ng-template matStepLabel>Personal Details</ng-template>
-              <div class="edit-container">
-                <mat-form-field>
-                  <input 
-                    type="text" 
-                    matInput 
-                    formControlName="firstName" 
-                    placeholder="Enter First Name*" 
-                  />
-                  <mat-error *ngIf="firstName.touched && firstName.invalid">
-                    <mat-error *ngIf="firstName.errors.required">
+                <ng-template matStepLabel>Personal Details</ng-template>
+                <div class="edit-container">
+                  <mat-form-field>
+                    <input 
+                      type="text" 
+                      matInput 
+                      formControlName="firstName" 
+                      placeholder="Enter First Name*" 
+                    />
+                    <mat-error *ngIf="firstName.touched && firstName.invalid">
+                      <mat-error *ngIf="firstName.errors.required">
+                        First Name is required .
+                      </mat-error>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input 
+                      type="text" 
+                      matInput 
+                      placeholder="Enter Last Name*" 
+                      formControlName="lastName" />
+                    <mat-error *ngIf="lastName.touched && lastName.invalid">
                       First Name is required .
                     </mat-error>
-                  </mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                  <input 
-                    type="text" 
-                    matInput 
-                    placeholder="Enter Last Name*" 
-                    formControlName="lastName" />
-                  <mat-error *ngIf="lastName.touched && lastName.invalid">
-                    First Name is required .
-                  </mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                  <input 
-                    type="text" 
-                    placeholder="Enter Employee Code"
-                    matInput 
-                    formControlName="employeeCode" />
-                  
-                  <mat-error *ngIf="employeeCode.touched && employeeCode.invalid">
-                    <mat-error *ngIf="employeeCode.errors.required">
-                      Employee code is required.
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input 
+                      type="text" 
+                      placeholder="Enter Employee Code"
+                      matInput 
+                      formControlName="employeeCode" />
+                    
+                    <mat-error *ngIf="employeeCode.touched && employeeCode.invalid">
+                      <mat-error *ngIf="employeeCode.errors.required">
+                        Employee code is required.
+                      </mat-error>
+                      <mat-error *ngIf="employeeCode.errors.shouldBeUnique">
+                        Employee code is not unique
+                      </mat-error>
                     </mat-error>
-                    <mat-error *ngIf="employeeCode.errors.shouldBeUnique">
-                      Employee code is not unique
-                    </mat-error>
-                  </mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                  <input type="email" matInput formControlName="emailAddress" placeholder="Enter Email Address*" />
-                  <mat-error *ngIf="emailAddress.touched && emailAddress.invalid">
-                    Email Address is required .
-                  </mat-error>
-                </mat-form-field>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input type="email" matInput formControlName="emailAddress" placeholder="Enter Email Address*" />
+                    <mat-error *ngIf="emailAddress.touched && emailAddress.invalid">
+                        <mat-error *ngIf="emailAddress.hasError('required')">
+                            Employee Address is required
+                          </mat-error>
+                          <mat-error *ngIf="!emailAddress.hasError('required') && emailAddress.hasError('email')">
+                              Please enter a valid email address.                            
+                          </mat-error>
+                     
 
-                <div class="button-row">
-                  <button color="primary" mat-raised-button matStepperNext [disabled]="!firstFormGroup.valid">Next</button>
+                    </mat-error>
+                    
+                  </mat-form-field>
+                  <div class="button-row">
+                    <button color="primary" mat-raised-button matStepperNext [disabled]="!firstFormGroup.valid">Next</button>
+                  </div>
                 </div>
-              </div>
-          </form>
+            </form>
           </mat-step>
 
           <mat-step label="Set Password">
