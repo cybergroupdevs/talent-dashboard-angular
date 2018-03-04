@@ -34,7 +34,7 @@
 
 
       <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" *ngIf='authService.isLoggedIn()' href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" *ngIf='authService.isLoggedIn()' id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="nav-link" *ngIf='authService.isLoggedIn()'>Hi {{authService.currentUser.emailAddress}}</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

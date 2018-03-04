@@ -1,273 +1,121 @@
 <div class="Absolute-Center is-Responsive">
-  <form #f="ngForm" name="f" (ngSubmit)="submit(f)"  ngNativeValidate novalidate>
-    <mat-card >
-     <mat-card-title>
-      Register
-    </mat-card-title>
-    <mat-card-content>
-      <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
-      <mat-step label="Personal Detail 1" layout = "column">
-        <ng-template matStepLabel>Personal Details</ng-template>
-        <mat-form-field>
-          <input 
-          type="text" 
-          matInput
-          ngModel 
-          name="firstName"   
-          #firstName="ngModel"
-          class="form-control"
-          placeholder="Enter First Name" 
-          required/>
-        </mat-form-field>
-        <mat-form-field>
-        <input 
-          type="text"
-          ngModel 
-          matInput  
-          #middleName="ngModel" 
-          placeholder="Enter Middle Name" 
-          name="middleName" 
-          required/>
-        </mat-form-field>
-          <mat-form-field>
-          <input 
-            type="text" 
-            ngModel 
-            matInput
-            #lastName="ngModel"
-            placeholder="Enter Last Name" 
-            name="lastName" 
-            required/>
-          </mat-form-field>
-            <mat-form-field>
-            <input 
-              type="date"  
-              name="dateOfBirth" 
-              ngModel 
-              matInput
-              #dateOfBirth="ngModel"
-              placeholder="Enter Date of birth" 
-              required/>
-            </mat-form-field>
+    <mat-card>
+      <mat-card-title>
+        Register
+      </mat-card-title>
+
+      <mat-card-content>
+        <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+          <mat-step label="Personal Detail 1" layout="column">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Personal Details</ng-template>
+              <div class="edit-container">
+                <mat-form-field>
+                  <input 
+                    type="text" 
+                    matInput 
+                    formControlName="firstName" 
+                    placeholder="Enter First Name*" 
+                  />
+                  <mat-error *ngIf="firstName.touched && firstName.invalid">
+                    <mat-error *ngIf="firstName.errors.required">
+                      First Name is required .
+                    </mat-error>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input 
+                    type="text" 
+                    matInput 
+                    placeholder="Enter Last Name*" 
+                    formControlName="lastName" />
+                  <mat-error *ngIf="lastName.touched && lastName.invalid">
+                    First Name is required .
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input 
+                    type="text" 
+                    placeholder="Enter Employee Code"
+                    matInput 
+                    formControlName="employeeCode" />
                   
-            <mat-form-field>
-              <mat-select
-                ngModel
-                name="gender" 
-                id="gender" 
-                placeholder="Select Gender"
-                #gender = "ngModel">
-                <mat-option *ngFor="let gender of genderType" [value]="gender.id">
-                    {{ gender.name }}
-                </mat-option>
-              </mat-select>
+                  <mat-error *ngIf="employeeCode.touched && employeeCode.invalid">
+                    <mat-error *ngIf="employeeCode.errors.required">
+                      Employee code is required.
+                    </mat-error>
+                    <mat-error *ngIf="employeeCode.errors.shouldBeUnique">
+                      Employee code is not unique
+                    </mat-error>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input type="email" matInput formControlName="emailAddress" placeholder="Enter Email Address*" />
+                  <mat-error *ngIf="emailAddress.touched && emailAddress.invalid">
+                    Email Address is required .
+                  </mat-error>
+                </mat-form-field>
+
+                <div class="button-row">
+                  <button color="primary" mat-raised-button matStepperNext [disabled]="!firstFormGroup.valid">Next</button>
+                </div>
+              </div>
+          </form>
+          </mat-step>
+
+          <mat-step label="Set Password">
+            <form [formGroup]="secondFormGroup">
+            <div class="edit-container">
+              <mat-form-field>
+                <input 
+                  type="password" 
+                  matInput 
+                  placeholder="Enter Password*" 
+                  formControlName="password" />
+                <mat-error *ngIf="password.touched && password.invalid">
+                  <mat-error *ngIf="password.errors.required">
+                    Password should not be empty.
+                  </mat-error>
+                  <mat-error *ngIf="password.errors.minlength">
+                    Password should be minimum {{password.errors.minlength.requiredLength}} character long .
+                  </mat-error>
+                  <mat-error *ngIf="password.errors.maxlength">
+                    Password should be miximnum 15 character long .
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input 
+                  type="password" 
+                  placeholder="Confirm Password" 
+                  matInput 
+                  formControlName="confirmPassword" 
+                />
+                <mat-error *ngIf="secondFormGroup.controls.confirmPassword.errors?.MatchPassword">
+                    Password Mismatch.
+                </mat-error>
               </mat-form-field>
 
-        <div>    
-          <button mat-button matStepperNext>Next</button>
-        </div>
-    </mat-step>
-
-    <mat-step label="Contact Details">
-        <ng-template matStepLabel>Contact Details</ng-template>
-        <mat-form-field>
-        <input 
-        type="email" 
-        matInput
-        ngModel 
-        name="emailAddress"  
-        #emailAddress="ngModel"
-        class="form-control"
-        placeholder="Enter Email"  
-        required/>
-        </mat-form-field> 
-
-          <mat-form-field>
-          <input 
-            type="text" 
-            placeholder="Enter Phone Number" 
-            ngModel 
-            matInput
-            #mobileNumber="ngModel"
-            name="mobileNumber" 
-            required/>
-            </mat-form-field>
-        
-                <div>    
-                    <button mat-button matStepperPrevious>Back</button>
-             
-                    <button mat-button matStepperNext>Next</button>
-                </div>
-    </mat-step>
-
-
-
-
-    <mat-step label="Profile Details">
-        <ng-template matStepLabel>Skill Details</ng-template>
-       
-        <mat-form-field>
-        <input 
-          type="text" 
-          placeholder="Enter Employee Code" 
-          ngModel 
-          matInput
-          #employeeCode="ngModel"
-          name="employeeCode" 
-          required/>
-          </mat-form-field>
-
-        <!-- <mat-select 
-          ngModel 
-          name="skills" 
-          id="skills" 
-          class="form-control"
-          #skills = "ngModel"
-          multiple
-          required>
-        <mat-option *ngFor="let category of categoryList" [value]="category.id">
-          {{category.name}}
-        </mat-option>
-      </mat-select> -->
-
-      <mat-form-field>
-          <mat-select
-            ngModel
-            name="skills" 
-            id="skills" 
-            placeholder="Select Skills"
-            multiple
-            #gender = "ngModel">
-            <mat-option *ngFor="let category of categoryList" [value]="category.id">
-                {{category.name}}
-            </mat-option>
-          </mat-select>
-      </mat-form-field>
-
-      <!-- <mat-label for="userType"> Role </mat-label>
-      <mat-select 
-        ngModel
-        name="userType" 
-        id="userType" 
-        class="form-control">
-      <mat-option *ngFor="let type of userType"  [value]="type.id">{{type.name}}</mat-option>
-      </mat-select> -->
-
-      <mat-form-field>
-          <mat-select
-            ngModel
-            name="userType" 
-            id="userType" 
-            placeholder="Select Role"
-            >
-            <mat-option *ngFor="let type of userType"  [value]="type.id">{{type.name}}</mat-option>
-          </mat-select>
-      </mat-form-field>
-
-      <div>    
-          <button mat-button matStepperPrevious>Back</button>
-   
-          <button mat-button matStepperNext>Next</button>
-      </div>
-    </mat-step>
-    <mat-step label="Residence">
-        <ng-template matStepLabel>Residential Address</ng-template>
-        <mat-form-field>
-        <input  
-          matInput
-          type="text" 
-          placeholder="Enter location" 
-          name="location" 
-          ngModel 
-          #location="ngModel"
-          required/>
-        </mat-form-field>
-
-
-          <mat-form-field>
-          <input 
-            type="text" 
-            placeholder=" Enter address" 
-            name="address" 
-            matInput
-            ngModel 
-            #address="ngModel"
-            required/>
-            </mat-form-field>
-          
-          <mat-form-field>
-            <input 
-            type="text" 
-            matInput
-            placeholder="Enter City" 
-            name="city" 
-            ngModel 
-            #city="ngModel"
-            required/>
-          </mat-form-field>
-          
-          <mat-form-field>
-            <input 
-                type="text" 
-                placeholder="Enter country" 
-                name="country"
-                matInput 
-                ngModel 
-                #country ="ngModel"
-                required/>
-          </mat-form-field>
-          <div>    
-              <button mat-button matStepperPrevious>Back</button>
-       
-              <button mat-button matStepperNext>Next</button>
-          </div>
-      </mat-step>
-      <mat-step label="Set Password">
-      <mat-form-field>
-        <input 
-          type="password"
-          placeholder="Enter Password" 
-          name="password"
-          ngModel 
-          matInput
-          #password="ngModel"
-          required/>
-      </mat-form-field>
-    
-      <mat-form-field>
-        <input 
-        type="password" 
-        placeholder="Repeat Password" 
-        matInput
-        name="psw-repeat" 
-        required/>
-      </mat-form-field>
-
-        <div class="clearfix">
-            <button type="button" mat-button matStepperPrevious onclick="" class="cancelbtn">Cancel</button>
-            <button type="submit" mat-button matStepperNext class="signupbtn" >Sign Up</button>
-          </div>
-      </mat-step>
-      <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <div *ngIf="invalidRegistration" class="alert alert-danger">
-            User already Exist ! 
-          </div>
-                
-          <div *ngIf= "!invalidRegistration" class="alert alert-success">
-             Successfully Registered , You will be naviagated to Login page soon ! 
+              <div class="button-row">
+                <button type="button" mat-raised-button matStepperPrevious color="primary" onclick="" class="cancelbtn">Cancel</button>
+                <button type="submit" (click)="submit(f)"  [disabled]="!secondFormGroup.valid" mat-raised-button matStepperNext color="primary" class="signupbtn">Sign Up</button>
+              </div>
             </div>
+          </form>
+          </mat-step>
 
-          <div *ngIf="invalidRegistration">
-            <button mat-button matStepperPrevious>Back</button>
-            <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
-          </div>
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <div *ngIf="invalidRegistration" class="alert alert-danger">
+              User already Exist !
+            </div>
+            <div *ngIf="!invalidRegistration" class="alert alert-success">
+              Successfully Registered , You will be naviagated to Login page soon !
+            </div>
           </mat-step>
         </mat-horizontal-stepper>
       </mat-card-content>
-      <mat-card-footer>
-
-      </mat-card-footer>
+      <!-- <mat-card-footer>
+      </mat-card-footer> -->
     </mat-card>
-</form>
 </div>

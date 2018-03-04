@@ -11,9 +11,7 @@ export class AuthService {
 
   constructor(private http : Http, private _router : Router) { }
 
-  registerUser(userDetail){
-    return this.http.post(this.nodeAPI + "/register" , userDetail);
-  }
+  
 
   login(userCredentials){
     return this.http.post(this.nodeAPI + "/login", userCredentials ).map(response =>{

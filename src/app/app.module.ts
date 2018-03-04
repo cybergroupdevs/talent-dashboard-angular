@@ -58,10 +58,11 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     GraphComponent,
     GraphComponent2,
     AdmindashboardComponent,
-    AccessdeniedComponent 
+    AccessdeniedComponent
   ],
   imports: [
     BrowserModule ,
+    ReactiveFormsModule,
     FusionChartsModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
@@ -75,7 +76,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     MatIconModule,
     MatSelectModule,
     MatChipsModule,
-    FormsModule, ReactiveFormsModule,
+    FormsModule, 
     RouterModule.forRoot([ {
       path : '' , 
       component : LoginComponent

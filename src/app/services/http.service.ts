@@ -69,7 +69,10 @@ export class HttpService {
 
   }
 
-
+  registerUser(userDetail){
+    debugger
+    return this.http.post(this.nodeAPI + "/register" , userDetail);
+  }
 
 
 

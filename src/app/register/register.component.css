@@ -1,0 +1,15 @@
+.edit-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-container > * {
+    width: 100%;
+  }
+
+  .button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: aliceblue
+  }
