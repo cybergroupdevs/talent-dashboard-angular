@@ -41,7 +41,7 @@
   </div>
   <div class ="row " >
       <div class="col-sm-4 filter" *ngFor="let employee of filteredEmployee ">
-        <mat-card class="example-card" style="min-height: 100%">
+        <mat-card class="example-card" style="min-height: 100%" (click)="goToUserDetails(employee._id)">
             <mat-card-header>
               <div mat-card-avatar class="profile-pic">
                   <img mat-card-image src= "https://ui-avatars.com/api/?size=64&name={{employee.displayName.split(' ').join('+')}}" alt="Profile">
@@ -57,9 +57,6 @@
                   <mat-chip color="primary" *ngFor = "let skill of employee.skills" >{{skill}}</mat-chip>
               </mat-chip-list>
             </mat-card-content>
-            <mat-card-actions>
-              <button mat-button [routerLink]="['/details' , employee._id]">VIEW</button>
-            </mat-card-actions>
           </mat-card>           
           </div>
       </div>

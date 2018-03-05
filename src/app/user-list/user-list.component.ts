@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Subscription } from 'rxjs/Subscription';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -14,12 +15,14 @@ export class UserListComponent implements OnInit , OnDestroy {
   skillList : {};
 
 
-  constructor(private service : HttpService) { }
+  constructor(private service : HttpService,
+              private router : Router ) { }
 
 
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }
+
   ngOnInit() {
       this.subscription = this.service.getUserList()
       .subscribe(
@@ -54,6 +57,10 @@ export class UserListComponent implements OnInit , OnDestroy {
     this.employees ; 
   }
 
+ public goToUserDetails(id)
+  {
+      this.router.navigate(['/details', id])
+  }
   public filterByGender(event){
     this.filteredEmployee = (event.value[0]) ? 
     this.employees.filter(emp => emp.gender.toLowerCase().includes(event.value[0].toLowerCase())) : 
